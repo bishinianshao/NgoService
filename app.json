@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/register/register",
+    "pages/index/index",
+    "pages/register/registerdetail/registerdetail",
+    "pages/register/registersuccess/registersuccess",
+    "pages/homepages/homepages",
+    "pages/require/require",
+    "pages/todolist/todolist",
+    "pages/todolist/tododetail/tododetail",
+    "pages/applyvistor/applyvistor",
+    "pages/applyvistor/applydetail/applydetail",
+    "pages/todolist/report/report",
+    "pages/todolist/follow/follow",
+    "pages/personalcenter/personalcenter",
+    "pages/personalcenter/personinfo/personinfo",
+    "pages/rolereset/rolereset",
+    "pages/completedlist/completedlist",
+    "pages/completedlist/completdetail/completdetail",
+    "pages/administrator/homepages/homepages",
+    "pages/administrator/roleaudit/roleaudit",
+    "pages/administrator/roleaudit/roleauditdetail/roleauditdetail",
+    "pages/administrator/registrationaudit/registrationaudit",
+    "pages/administrator/registrationaudit/registrationauditdetail/registrationauditdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "NGO",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

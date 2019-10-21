@@ -1,0 +1,20 @@
+/* pages/register/register.wxss */
+ .logon{
+        position: relative;
+        background: #868686;
+        width: 600rpx;
+        height: 100rpx;
+        border-radius : 150rpx;
+        font-size: 38rpx;
+        top : 250rpx;
+    }
+
+ .register{
+        position: relative;
+        background: #868686;
+        width: 600rpx;
+        height: 100rpx;
+        border-radius : 150rpx;
+        font-size: 38rpx;
+        top : 300rpx;
+    }

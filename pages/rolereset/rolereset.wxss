@@ -1,0 +1,31 @@
+/* pages/rolereset/rolereset.wxss */
+.reset{
+  display: flex;
+  margin-top: 50rpx
+}
+.section{
+  font-size: 35rpx;
+  color: rgb(77, 73, 73);
+  margin: 10rpx 50rpx 35rpx 35rpx
+}
+.button{
+  width: 90%;
+  margin-bottom:20rpx;
+  margin-top: 400rpx;
+  margin-left: 10px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}
+.divLine{
+ background: #E0E3DA;
+ width: 88%;
+ height: 5rpx;
+ margin-left: 15px;
+}

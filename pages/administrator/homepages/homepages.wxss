@@ -1,0 +1,10 @@
+/* pages/administrator/homepages/homepages.wxss */
+.usercontatiner{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx
+}
+.getrequire{
+  position: relative;
+  padding-left: 30rpx
+}

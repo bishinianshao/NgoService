@@ -1,0 +1,77 @@
+<!--pages/require/require.wxml-->
+<view>
+<view>后期跟进申请</view>
+<van-cell-group>  
+    <van-field
+      id = "1"
+      value="{{value}}"
+      required
+      clearable
+      label="姓名:"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "2"
+      value="{{value}}"
+      clearable
+      label="读经:"
+      placeholder="请输入读经内容"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "3"
+      value="{{value}}"
+      clearable
+      label="祷告:"
+      placeholder="请输入祷告"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "4"
+      value="{{value}}"
+      clearable
+      label="聚会:"
+      placeholder="请输入聚会内容"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "5"
+      value="{{value}}"
+      clearable
+      label="探访原因:"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "6"
+      value="{{value}}"
+      clearable
+      label="关怀需要:"
+      bindchange="onChange"
+    />
+  </van-cell-group>
+  <view class="section">
+    <picker mode="date" value="{{date}}" start="1920-01-01" end="2017-09-01" bindchange="bindDateChange">
+      <view class="picker">
+        探访日期: {{date}}
+      </view>
+    </picker>
+  </view>
+  <van-toast id="van-toast" />
+<view class='section'>后期跟进理由</view>
+  <view class="section">
+   <textarea 
+    style='width:600rpx; font-size: 35rpx;' 
+    placeholder='备注信息' 
+    maxlength='-1' 
+    value="{{content}}"
+    auto-focus
+    auto-height
+    bindinput='contentChange'>   
+   </textarea>
+  </view>
+
+  <view>
+    <button class="button" bindtap='sumbit'>提交</button>
+  </view>
+
+</view>

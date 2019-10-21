@@ -1,0 +1,47 @@
+/* pages/administrator/roleaudit/roleauditdetail/roleauditdetail.wxss */
+page{
+ background: #f3f7f7;
+}
+.gender{
+  font-size: 40rpx;
+  padding-left: 35rpx;
+  color: black;
+  font-weight: bold;
+}
+.section{
+  padding-left: 35rpx;
+  padding-top: 40rpx;
+  padding-bottom: 20rpx;
+}
+.section__title{
+  font-size: 35rpx;
+}
+
+.button1{
+  width: 40%;
+  margin-bottom:20rpx;
+  margin-left: 25px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}
+.button2{
+  width: 40%;
+  margin-bottom:20rpx;
+  margin-left: 10px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}

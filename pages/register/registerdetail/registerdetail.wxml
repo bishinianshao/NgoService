@@ -1,0 +1,151 @@
+<!--pages/register/registerdetail/registerdetail.wxml-->
+<view>
+  <van-cell-group>
+    <van-field
+      id = "1"
+      value="{{value}}"
+      required
+      clearable
+      label="姓名:"
+      placeholder="请输入姓名"
+      bindchange="onChange"
+    />
+  </van-cell-group>
+
+  <view class="section">
+    <picker mode="selector" range="{{selectData}}" bindchange="bindGenderChange">
+      <view class="picker">
+        性别:<view class="pickerdetail">{{selectData[index]}}</view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="section">
+    <picker mode="date" value="{{date}}" start="1920-01-01" end="2017-09-01" bindchange="bindDateChange">
+      <view class="picker">
+        出生日期: <view style=" padding-left: 73rpx;">{{date}}</view>
+      </view>
+    </picker>
+  </view>
+
+  <van-cell-group>  
+    <van-field
+      id = "2"
+      value="{{value}}"
+      required
+      clearable
+      label="家庭住址:"
+      placeholder="请输入家庭住址"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "3"
+      value="{{value}}"
+      required
+      clearable
+      label="联系方式:"
+      placeholder="请输入联系方式"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "4"
+      value="{{value}}"
+      required
+      clearable
+      label="信主年份:"
+      placeholder="请输入信主年份"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "5"
+      value="{{value}}"
+      required
+      clearable
+      label="空闲时间:"
+      placeholder="请输入空闲时间"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "6"
+      value="{{value}}"
+      clearable
+      label="配偶信仰:"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "7"
+      value="{{value}}"
+      clearable
+      label="所属会堂:"
+      bindchange="onChange"
+    />
+  </van-cell-group>
+</view>
+
+<view>
+  <view class='gender'>爱心角色 ： </view>
+  <van-checkbox-group class="checkboxgroup" value="{{ result }}" bind:change="onNextChange">
+    <van-checkbox
+      id = "index"
+      class="checkbox" 
+      wx:for="{{ list }}"
+      wx:key="index"
+      name="{{ item }}"
+    >
+     {{ item }}
+    </van-checkbox>
+  </van-checkbox-group>
+
+  <view  wx:if = "{{isDriver}}">
+    <view class='gender'>司机信息 ： </view>
+    <van-cell-group>
+      <van-field
+      id="1"
+      value="{{value}}"
+      required
+      clearable
+      label="车牌号:"
+      placeholder="请输入车牌号"
+      bindchange="onDriverChange"
+    />
+    <van-field
+      id="2"
+      value="{{value}}"
+      required
+      clearable
+      label="可载人数:"
+      placeholder="请输入可载人数"
+      bindchange="onDriverChange"
+    />
+    <van-field
+      id="3"
+      value="{{value}}"
+      required
+      clearable
+      label="熟悉区域:"
+      placeholder="请输入熟悉区域"
+      bindchange="onDriverChange"
+    />
+    </van-cell-group>
+  </view>
+</view>
+
+<view wx:if = "{{isVistors}}">
+  <view class='gender'>探访员信息</view>
+  <view class="section">
+   <textarea 
+    style='width:600rpx; font-size: 35rpx;' 
+    placeholder='请输入探访经历' 
+    maxlength='-1' 
+    value="{{content}}"
+    auto-focus
+    bindinput='contentChange'>   
+   </textarea>
+  </view>
+</view>
+
+<view>
+  <button class="button" bindtap='sumbit'>
+    <view>提交</view>
+  </button>
+</view>

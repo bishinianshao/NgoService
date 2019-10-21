@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-button": "../../Component/vant/button/index",
+    "van-tabbar": "../../Component/vant/tabbar/index",
+    "van-icon": "../../Component/vant/icon/index",
+    "van-tabbar-item": "../../Component/vant/tabbar-item/index",
+    "van-toast": "../../Component/vant/toast/index"
+  }
+}

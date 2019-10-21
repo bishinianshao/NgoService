@@ -1,0 +1,48 @@
+/* pages/todolist/follow/follow.wxss */
+
+.section{
+  font-size: 35rpx;
+  color: rgb(77, 73, 73);
+  margin: 55rpx 0 35rpx 35rpx
+}
+.con{
+  display: flex;
+  flex-direction: column;
+  padding-left: 50rpx
+}
+.info{
+  font-size: 38rpx;
+  padding-left: 30rpx;
+}
+.people{
+  font-size: 40rpx;
+  color: rgb(89, 167, 231)
+}
+.containerchild2{
+  display: flex;
+  flex-direction: row;
+}
+.containerchild{
+  margin-top: 30rpx;
+}
+.button{
+  width: 90%;
+  margin-bottom:20rpx;
+  margin-left: 10px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}
+.info1{
+  padding-left: 70rpx
+}
+.checkbox{
+  display: flex;
+  flex-direction: row;
+}

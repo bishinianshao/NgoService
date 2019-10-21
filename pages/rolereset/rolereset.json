@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-cell": "../../Component/vant/cell/index",
+    "van-switch": "../../Component/vant/switch/index",
+    "van-icon": "../../Component/vant/icon/index",
+    "van-toast": "../../Component/vant/toast/index"
+  }
+}

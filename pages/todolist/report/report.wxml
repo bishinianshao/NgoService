@@ -1,0 +1,44 @@
+<!--pages/todolist/report/report.wxml-->
+<view class="con">
+  <view class="upload">
+    <view class="upload-font">图片上传</view>
+    <image style="width: 50px; height: 50px;" src="../../../Images/icons8-add-image-24.png" bindtap='chooseImageTap'></image>
+  </view>
+  <view class="upload">
+    <view class="upload-font">视频上传</view>
+    <image style="width: 50px; height: 50px;padding-left:10rpx;padding-top:10rpx"  
+           src="../../../Images/icons8-add-camera-24.png"    bindtap='chooseVideoTap'></image>
+  </view>
+  <view class="upload">
+    <view class="upload-font">待祈祷事项内容</view>
+  </view>
+  <view class="section">
+   <textarea 
+    style='width:600rpx; font-size: 35rpx;' 
+    placeholder='待祈祷事项内容' 
+    maxlength='-1' 
+    value="{{content1}}"
+    auto-focus
+    auto-height
+    bindinput='contentChange1'>   
+   </textarea>
+  </view>
+  <view class="upload">
+    <view class="upload-font">汇报</view>
+  </view>
+  <view class="section">
+   <textarea 
+    style='width:600rpx; font-size: 35rpx;' 
+    placeholder='请填写汇报内容' 
+    maxlength='-1' 
+    value="{{content2}}"
+    auto-focus
+    auto-height
+    bindinput='contentChange2'>   
+   </textarea>
+  </view>
+  <view class="upload">
+    <button class="button" bindtap='sumbit'>提交探访汇报</button>
+    <button class="button" bindtap='follow'>申请后期跟进</button>
+  </view>
+</view>
