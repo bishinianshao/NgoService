@@ -11,13 +11,13 @@
       <view class="getrequire">注册审核</view>
       </view> 
       <view style="padding-left: 45rpx">
-      <van-icon size='200rpx' color='#DC6D6D'  name="friends" bindclick="postRequire" />
-      <view class="getrequire">人员管理</view>
+      <van-icon size='200rpx' color='#DC6D6D'  name="friends" bindclick="toRequireAudit" />
+      <view class="getrequire">审核需求</view>
       </view>
     </view>    
       <view class="usercontatiner">
       <view>
-        <van-icon size='200rpx' color='#DC6D6D' name="like" bindclick="navapply"/>
+        <van-icon size='200rpx' color='#DC6D6D' name="like" bindclick="toApplyAudit"/>
         <view class="getrequire">审核探访</view>
       </view>
       <view>

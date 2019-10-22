@@ -1,32 +1,25 @@
-// pages/administrator/homepages/homepages.js
+// pages/administrator/requireaudit/requireaudit.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    auditlist: [
+      {
+        name: "张三",
+        date: '2019-10-07',
+      },
+      {
+        name: "李四",
+        date: '2019-10-08',
+      },
+    ]
   },
 
-  toRoleAudit : function(){
+  toAuditDetail: function () {
     wx.navigateTo({
-      url: '../roleaudit/roleaudit',
-    })
-  },
-
-  toRegistrationAudit : function(){
-    wx.navigateTo({
-      url: '../registrationaudit/registrationaudit',
-    })
-  },
-  toRequireAudit : function(){
-    wx.navigateTo({
-      url: '../requireaudit/requireaudit',
-    })
-  },
-  toApplyAudit : function(){
-    wx.navigateTo({
-      url: '../applyaudit/applyaudit',
+      url: './requiredetail/requiredetail',
     })
   },
   /**

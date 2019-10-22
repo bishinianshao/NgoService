@@ -1,4 +1,4 @@
-// pages/administrator/homepages/homepages.js
+// pages/administrator/applyaudit/applyaudit.js
 Page({
 
   /**
@@ -8,27 +8,6 @@ Page({
 
   },
 
-  toRoleAudit : function(){
-    wx.navigateTo({
-      url: '../roleaudit/roleaudit',
-    })
-  },
-
-  toRegistrationAudit : function(){
-    wx.navigateTo({
-      url: '../registrationaudit/registrationaudit',
-    })
-  },
-  toRequireAudit : function(){
-    wx.navigateTo({
-      url: '../requireaudit/requireaudit',
-    })
-  },
-  toApplyAudit : function(){
-    wx.navigateTo({
-      url: '../applyaudit/applyaudit',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

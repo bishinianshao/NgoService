@@ -21,7 +21,10 @@
     "pages/administrator/roleaudit/roleaudit",
     "pages/administrator/roleaudit/roleauditdetail/roleauditdetail",
     "pages/administrator/registrationaudit/registrationaudit",
-    "pages/administrator/registrationaudit/registrationauditdetail/registrationauditdetail"
+    "pages/administrator/registrationaudit/registrationauditdetail/registrationauditdetail",
+    "pages/administrator/requireaudit/requireaudit",
+    "pages/administrator/requireaudit/requiredetail/requiredetail",
+    "pages/administrator/applyaudit/applyaudit"
   ],
   "window": {
     "backgroundTextStyle": "light",
