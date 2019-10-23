@@ -1,4 +1,5 @@
-/* pages/administrator/applyaudit/applyaudit.wxss */
+/* pages/administrator/followaudit/followaudit.wxss */
+
 .container{
   display: flex
 }

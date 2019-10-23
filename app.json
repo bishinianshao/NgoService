@@ -24,7 +24,10 @@
     "pages/administrator/registrationaudit/registrationauditdetail/registrationauditdetail",
     "pages/administrator/requireaudit/requireaudit",
     "pages/administrator/requireaudit/requiredetail/requiredetail",
-    "pages/administrator/applyaudit/applyaudit"
+    "pages/administrator/applyaudit/applyaudit",
+    "pages/administrator/applyaudit/applydetail/applydetail",
+    "pages/administrator/followaudit/followaudit",
+    "pages/administrator/followaudit/followdetail/followdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

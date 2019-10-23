@@ -12,16 +12,16 @@
       </view> 
       <view style="padding-left: 45rpx">
       <van-icon size='200rpx' color='#DC6D6D'  name="friends" bindclick="toRequireAudit" />
-      <view class="getrequire">审核需求</view>
+      <view class="getrequire">需求审核</view>
       </view>
     </view>    
       <view class="usercontatiner">
       <view>
         <van-icon size='200rpx' color='#DC6D6D' name="like" bindclick="toApplyAudit"/>
-        <view class="getrequire">审核探访</view>
+        <view class="getrequire">探访审核</view>
       </view>
       <view>
-        <van-icon size='200rpx' color='#DC6D6D' name="invition" bindclick="navtodo"/>
+        <van-icon size='200rpx' color='#DC6D6D' name="invition" bindclick="navFollowAudit"/>
         <view class="getrequire">后期跟进审核</view>
       </view>
       <view>

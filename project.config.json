@@ -60,8 +60,9 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/administrator/roleaudit/roleauditdetail/roleauditdetail",
-					"pathName": "pages/administrator/roleaudit/roleauditdetail/roleauditdetail",
+					"name": "pages/administrator/applyaudit/applydetail/applydetail",
+					"pathName": "pages/administrator/applyaudit/applydetail/applydetail",
+					"query": "",
 					"scene": null
 				}
 			]

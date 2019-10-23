@@ -1,0 +1,31 @@
+<!--pages/administrator/followaudit/followdetail/followdetail.wxml-->
+<view>
+<van-cell-group>  
+    <van-cell title="姓名:" value="{{userInfo.name}}" />
+    <van-cell title="读经:" value="{{userInfo.readingClassics}}" />
+    <van-cell title="探访日期:" value="{{userInfo.visitDate}}" />
+    <van-cell title="祷告:" value="{{userInfo.pray}}" />
+    <van-cell title="聚会:" value="{{userInfo.party}}" />
+    <van-cell title="探访原因:" value="{{userInfo.visitReason}}" />
+    <van-cell title="关怀需要:" value="{{userInfo.care}}" />
+  </van-cell-group>
+<view class='section'>后期跟进理由:</view>
+  <view class="section">
+   <textarea 
+    style='width:600rpx; font-size: 35rpx;font' 
+    maxlength='-1' 
+    value="{{userInfo.followReason}}"
+    auto-height
+    disabled='true'
+    bindinput='contentChange'>   
+   </textarea>
+  </view>
+  <view>
+    <button class="button1" bindtap='pass'>
+      <view>通过</view>
+    </button>
+    <button class="button2" bindtap='reject'>
+      <view>驳回</view>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-checkbox": "../../../Component/vant/checkbox/index",
+    "van-checkbox-group": "../../../Component/vant/checkbox-group/index",
+    "van-button": "../../../Component/vant/button/index",
+    "van-toast": "../../../Component/vant/toast/index"
+  }
+}

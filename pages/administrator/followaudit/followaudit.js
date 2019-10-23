@@ -1,42 +1,29 @@
-// pages/administrator/homepages/homepages.js
+// pages/administrator/followaudit/followaudit.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    auditlist: [
+      {
+        name: "张三",
+        date: '2019-10-07',
+      },
+      {
+        name: "李四",
+        date: '2019-10-08',
+      },
+    ]
   },
 
-  toRoleAudit : function(){
+  toAuditDetail: function () {
     wx.navigateTo({
-      url: '../roleaudit/roleaudit',
-    })
-  },
-
-  toRegistrationAudit : function(){
-    wx.navigateTo({
-      url: '../registrationaudit/registrationaudit',
-    })
-  },
-  toRequireAudit : function(){
-    wx.navigateTo({
-      url: '../requireaudit/requireaudit',
-    })
-  },
-  toApplyAudit : function(){
-    wx.navigateTo({
-      url: '../applyaudit/applyaudit',
-    })
-  },
-
-  navFollowAudit : function(){
-    wx.navigateTo({
-      url: '../followaudit/followaudit',
+      url: './followdetail/followdetail',
     })
   },
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载00 
    */
   onLoad: function (options) {
 

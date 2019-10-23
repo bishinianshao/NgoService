@@ -1,0 +1,35 @@
+/* pages/administrator/followaudit/followdetail/followdetail.wxss */
+
+.section{
+  font-size: 35rpx;
+  color: rgb(77, 73, 73);
+  margin: 55rpx 0 35rpx 35rpx
+}
+.button1{
+  width: 40%;
+  margin-bottom:20rpx;
+  margin-left: 25px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}
+.button2{
+  width: 40%;
+  margin-bottom:20rpx;
+  margin-left: 10px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}

@@ -1,40 +1,37 @@
-// pages/administrator/homepages/homepages.js
+// pages/administrator/applyaudit/applydetail/applydetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    user: "张三",
+    drivers: [
+      { name: "张飞" },
+      { name: "刘备" }
+    ],
+    vistors: [
+      { name: "张飞" },
+      { name: "王五" }
+    ],
+    list: ['司机', '探访员'],
+    result: [],
   },
 
-  toRoleAudit : function(){
-    wx.navigateTo({
-      url: '../roleaudit/roleaudit',
-    })
-  },
-
-  toRegistrationAudit : function(){
-    wx.navigateTo({
-      url: '../registrationaudit/registrationaudit',
-    })
-  },
-  toRequireAudit : function(){
-    wx.navigateTo({
-      url: '../requireaudit/requireaudit',
-    })
-  },
-  toApplyAudit : function(){
-    wx.navigateTo({
-      url: '../applyaudit/applyaudit',
+  pass: function () {
+    console.log(1111111)
+    wx.redirectTo({
+      url: '../../applyaudit/applyaudit',
     })
   },
 
-  navFollowAudit : function(){
-    wx.navigateTo({
-      url: '../followaudit/followaudit',
+  reject: function () {
+    console.log(2222222)
+    wx.redirectTo({
+      url: '../../applyaudit/applyaudit',
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

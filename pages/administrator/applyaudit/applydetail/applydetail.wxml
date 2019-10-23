@@ -1,0 +1,44 @@
+<!--pages/administrator/applyaudit/applydetail/applydetail.wxml-->
+<view class="con">
+  <view class="containerchild">
+    <view class="containerchild2">
+      <image style="width: 20px; height: 20px; background-color: white;" src="../../../../Images/icons8-collaborator-male-24.png"></image>
+      <view class="info">被探访者信息</view>
+    </view>
+    <view class="people">{{user}}</view>
+    <view class="people">探访时间：2019-10-10</view>
+    <view class="people">探访地点：崂山</view>
+  </view>
+  <view class="divLine"></view>
+  <view class="containerchild">
+    <view class="containerchild2">
+      <image style="width: 20px; height: 20px; background-color: white;" src="../../../../Images/icons8-suv-24.png"></image>
+      <view class="info">司机信息</view>
+    </view>
+   
+    <view wx:for="{{drivers}}" wx:key="index">
+      <view  class="people">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="containerchild">
+    <view class="containerchild2">
+      <image style="width: 20px; height: 20px; background-color: white;" src="../../../../Images/icons8-heart-outline-24.png"></image>
+      <view class="info">探访员信息</view>
+    </view>
+   
+    <view wx:for="{{vistors}}" wx:key="index">
+      <view class="people">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view>
+    <button class="button1" bindtap='pass'>
+      <view>通过</view>
+    </button>
+    <button class="button2" bindtap='reject'>
+      <view>驳回</view>
+    </button>
+  </view>
+  <van-toast id="van-toast" />
+</view>
