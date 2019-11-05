@@ -10,6 +10,8 @@ Page({
     src : '',
     report:"",
     pray:"",
+    tempImagePaths : [],
+    tempVideoPaths : ''
   },
 
   //添加上传图片
@@ -39,15 +41,18 @@ Page({
       success: function (res) {
         console.log('图片路径');
         console.log(res)
+        that.setData({
+          tempImagePaths: res.tempFilePaths
+        })
         //that.upImgs(res.tempFilePaths[0], 0) //调用上传方法
       }
     })
   },
   //上传服务器
-  upImgs: function (imgurl, index) {
+  /*upImgs: function (imgurl, index) {
     var that = this;
     wx.uploadFile({
-      url: 'https://xxxxxxxxxxxxxxxxxxxxxxxxxxxx',//
+      url: 'https://xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       filePath: imgurl,
       name: 'file',
       header: {
@@ -64,7 +69,7 @@ Page({
         console.log(that.data.picPaths)
       }
     })
-  },
+  },*/
 
   //选择视频
   chooseVideoTap: function () {
@@ -73,6 +78,7 @@ Page({
       itemList: ['从手机中选择', '用相机拍摄'],
       itemColor: "#00000",
       success: function (res) {
+        console.log("选择视频")
         if (!res.cancel) {
           if (res.tapIndex == 0) {
             that.chooseWxVideo('album')
@@ -85,6 +91,7 @@ Page({
   },
   // 视频本地路径
   chooseWxVideo: function (type) {
+    console.log(type)
     var that = this;
     wx.chooseVideo({
       sourceType: [type],
@@ -93,15 +100,23 @@ Page({
       success: function (res) {
         console.log("视频路径")
         console.log(res)
-        //that.setData({
-        // src: res.tempFilePath,
-        //})
+        that.setData({
+          tempVideoPaths: res.tempFilePath,
+        })
         //that.uploadvideo(that.data.src)
       }
     })
+   /* wx.chooseVideo({
+      sourceType: ['album'],
+      maxDuration: 60,
+      camera: 'back',
+      success(res) {
+        console.log(res.tempFilePath)
+      }
+    })*/
   },
   //上传视频 
-  uploadvideo: function (videourl) {
+ /* uploadvideo: function (videourl) {
     var src = this.data.src;
     console.log("视频上传")
     wx.uploadFile({
@@ -119,7 +134,7 @@ Page({
         console.log('接口调用失败')
       }
     })
-  },
+  },*/
 
   //待祈祷事项内容
   contentChange1(e) {

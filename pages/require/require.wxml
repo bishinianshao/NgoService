@@ -4,7 +4,6 @@
     <van-field
       id = "1"
       value="{{value}}"
-      required
       clearable
       label="姓名:"
       bindchange="onChange"

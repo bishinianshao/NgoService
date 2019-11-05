@@ -2,40 +2,49 @@
 <view class="con">
   <view class="containerchild">
     <view class="containerchild2">
+     <view style="  display: flex; flex-direction: row;">  
       <image style="width: 20px; height: 20px; background-color: white;" src="../../../Images/icons8-collaborator-male-24.png"></image>
       <view class="info">被探访者信息</view>
-    </view>
-    <view class="people">{{user.name}}</view>
-    <view class="divLine"></view>
-    <view class="visitedinfo">姓名： {{user.name}}</view>
-    <view class="visitedinfo">读经： {{user.reading}}</view>
-    <view class="visitedinfo">祷告： {{user.pray}}</view>
-    <view class="visitedinfo">聚会： {{user.party}}</view>
-    <view class="visitedinfo">探访时间： {{user.visittime}}</view>
-    <view class="visitedinfo">探访原因： {{user.visitreason}}</view>
-    <view class="visitedinfo">关怀需要： {{user.careneed}}</view>
-    <view class="visitedinfo">备注： {{user.remark}}</view>
+     </view>
+      <van-cell-group >
+        <van-cell title="姓名" value="{{user.name}}" />
+        <van-cell title="读经" value="{{user.reading}}" />
+        <van-cell title="祷告" value="{{user.pray}}" />
+        <van-cell title="聚会" value="{{user.party}}" />
+        <van-cell title="探访时间" value="{{user.visittime}}" />
+        <van-cell title="探访地点" value="{{user.visitreason}}" />
+        <van-cell title="关怀需要" value="{{user.careneed}}" />
+        <van-cell title="备注" value="{{user.remark}}" />
+      </van-cell-group>
+     </view>
   </view>
   <view class="divLine"></view>
   <view class="containerchild">
     <view class="containerchild2">
+     <view style="  display: flex; flex-direction: row;">  
       <image style="width: 20px; height: 20px; background-color: white;" src="../../../Images/icons8-suv-24.png"></image>
       <view class="info">司机信息</view>
+     </view>
     </view>
-   
     <view wx:for="{{drivers}}" wx:key="index">
-      <view  class="people">{{item.name}}</view>
+      <van-cell-group >
+        <van-cell title="姓名" value="{{item.name}}" />
+      </van-cell-group>
     </view>
   </view>
   <view class="divLine"></view>
   <view class="containerchild">
     <view class="containerchild2">
+     <view style="  display: flex; flex-direction: row;">  
       <image style="width: 20px; height: 20px; background-color: white;" src="../../../Images/icons8-heart-outline-24.png"></image>
       <view class="info">探访员信息</view>
+     </view>
     </view>
    
     <view wx:for="{{vistors}}" wx:key="index">
-      <view class="people">{{item.name}}</view>
+      <van-cell-group >
+        <van-cell title="姓名" value="{{item.name}}" />
+      </van-cell-group>
     </view>
   </view>
   <view class="divLine"></view>

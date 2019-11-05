@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-checkbox": "../../../Component/vant/checkbox/index",
-    "van-checkbox-group": "../../../Component/vant/checkbox-group/index",
-    "van-button": "../../../Component/vant/button/index",
-    "van-toast": "../../../Component/vant/toast/index"
+    "van-toast": "../../../../Component/vant/toast/index",
+    "van-swipe-cell": "../../../../Component/vant/swipe-cell/index",
+    "van-cell": "../../../Component/vant/cell/index",
+    "van-cell-group": "../../../../Component/vant/cell-group/index"
   }
 }

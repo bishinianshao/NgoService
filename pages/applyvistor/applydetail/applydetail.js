@@ -6,7 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: "张三",
+    user: {
+      name: "张三",
+      reading: "读经内容",
+      pray: "祷告内容",
+      party: "聚会内容",
+      visittime: "2010-10-10",
+      visitreason: "探访原因",
+      careneed: "关怀需要",
+      remark: "备注"
+    },
     drivers: [
       { name: "张飞" },
       { name: "刘备" }

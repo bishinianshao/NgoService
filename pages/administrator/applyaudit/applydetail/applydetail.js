@@ -5,7 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: "张三",
+    user: {
+      name: "张三",
+      reading: "读经内容",
+      pray: "祷告内容",
+      party: "聚会内容",
+      visittime: "2010-10-10",
+      visitreason: "探访原因",
+      careneed: "关怀需要",
+      remark: "备注"
+    },
     drivers: [
       { name: "张飞" },
       { name: "刘备" }
@@ -16,6 +25,14 @@ Page({
     ],
     list: ['司机', '探访员'],
     result: [],
+  },
+
+  handleDelete : function(){
+    console.log(11111111111)
+  },
+
+  handlePriDuty : function(){
+    console.log(222222222)
   },
 
   pass: function () {

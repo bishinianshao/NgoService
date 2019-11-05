@@ -15,7 +15,7 @@
 }
 .containerchild2{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .containerchild{
   margin-top: 30rpx;
