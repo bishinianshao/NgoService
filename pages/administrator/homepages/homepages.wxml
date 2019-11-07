@@ -29,7 +29,9 @@
         <view class="getrequire">历史记录</view>
       </view>
       </view>   
-      
+  </view>
+  <view class="btn">
+    <button class="button" bindtap='toUser'>用户</button>
   </view>
   <van-toast id="van-toast" />
   <view>

@@ -25,6 +25,13 @@ Page({
     ],
     list: ['司机', '探访员'],
     result: [],
+    activeNames: ['1', '2', '3']
+  },
+  
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    });
   },
 
   handleDelete : function(){

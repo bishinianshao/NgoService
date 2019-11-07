@@ -4,6 +4,12 @@
   color: rgb(77, 73, 73);
   margin: 55rpx 0 35rpx 35rpx
 }
+.gender{
+  font-size: 40rpx;
+  padding-left: 35rpx;
+  color: black;
+  font-weight: bold;
+}
 .button1{
   width: 40%;
   margin-bottom:20rpx;

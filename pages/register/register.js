@@ -17,7 +17,7 @@ Page({
   },
 
   handleGetUserInfo() {
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../homepages/homepages',
     })
   },
@@ -74,7 +74,7 @@ Page({
     if (data.detail.rawData) {
       this.getUserInfo()
     }
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './registerdetail/registerdetail',
     })
   },

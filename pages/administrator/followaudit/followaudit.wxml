@@ -9,7 +9,7 @@
           </view>
           <view class="content">
             <view>
-              <text class="MailContent">姓名 : {{item.name}}</text>
+              <text class="MailContent">被探访者 : {{item.name}}</text>
               <text class='nameText'>{{item.date}}</text>
             </view>
           </view>

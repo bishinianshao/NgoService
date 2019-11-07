@@ -1,4 +1,5 @@
 // pages/completedlist/completedlist.js
+var app = getApp();
 Page({
 
   /**
@@ -19,7 +20,7 @@ Page({
   },
   //详情
   signup() {
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './completdetail/completdetail',
     })
   },

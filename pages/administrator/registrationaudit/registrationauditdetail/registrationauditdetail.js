@@ -21,10 +21,29 @@ Page({
       passengers: "5",
       familiararea: "市南区"
     },
-    isDriver: false,
-    isVistors: false,
+    isDriver: true,
+    isVistors: true,
+    activeNames: ['1', '2', '3'],
+    checked1: true,
+    checked2: true
   },
-  
+
+  onChangeSwitch1({ detail }) {
+    // 需要手动对 checked 状态进行更新
+    this.setData({ checked1: detail });
+  },
+
+  onChangeSwitch2({ detail }) {
+    // 需要手动对 checked 状态进行更新
+    this.setData({ checked2: detail });
+  },
+
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    });
+  },
+
   pass: function () {
     console.log(1111111)
     wx.redirectTo({

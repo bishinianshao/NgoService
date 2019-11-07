@@ -1,4 +1,5 @@
 // pages/administrator/roleaudit/roleaudit.js
+var app = getApp();
 Page({
 
   /**
@@ -20,7 +21,7 @@ Page({
   },
 
   toAuditDetail:function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './roleauditdetail/roleauditdetail',
     })
   },

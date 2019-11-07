@@ -33,25 +33,31 @@ Page({
 
   },
   postRequire(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../require/require',
     })
   },
 
   navapply(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../applyvistor/applyvistor',
     })
   },
 
   navtodo() {
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../todolist/todolist',
     })
   },
   navcompleted(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../completedlist/completedlist',
+    })
+  },
+
+  toAdministraror(){
+    app.router.navigateTo({
+      url: '../administrator/homepages/homepages',
     })
   },
   /**

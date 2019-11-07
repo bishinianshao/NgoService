@@ -1,4 +1,5 @@
 // pages/administrator/followaudit/followaudit.js
+var app = getApp();
 Page({
 
   /**
@@ -18,7 +19,7 @@ Page({
   },
 
   toAuditDetail: function () {
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './followdetail/followdetail',
     })
   },

@@ -8,11 +8,29 @@ page{
   color: black;
   font-weight: bold;
 }
+
+.driver{
+  font-size: 40rpx;
+  padding-left: 35rpx;
+  color: black;
+  font-weight: bold;
+  padding-right: 350rpx;
+}
+
+.visitor{
+  font-size: 40rpx;
+  padding-left: 35rpx;
+  color: black;
+  font-weight: bold;
+  padding-right: 310rpx;
+}
+
 .section{
   padding-left: 35rpx;
   padding-top: 40rpx;
   padding-bottom: 20rpx;
 }
+
 .section__title{
   font-size: 35rpx;
 }
@@ -31,6 +49,7 @@ page{
   float: left;
   font-size: 35rpx;
 }
+
 .button2{
   width: 40%;
   margin-bottom:20rpx;
@@ -44,4 +63,7 @@ page{
   color: white;
   float: left;
   font-size: 35rpx;
+}
+.containerchild{
+  display: flex
 }

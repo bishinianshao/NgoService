@@ -1,5 +1,6 @@
 // pages/todolist/tododetail/tododetail.js
 import Toast from '../../../Component/vant/toast/toast';
+var app = getApp();
 Page({
 
   /**
@@ -25,12 +26,18 @@ Page({
     ],
     list: ['司机', '探访员'],
     result: [],
+    activeNames: ['1', '2', '3']
   },
 
-
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    });
+  },
+  
   sumbit(){
     console.log(this.data.result)
-      wx.navigateTo({
+      app.router.navigateTo({
         url: '../report/report'
       })
   },

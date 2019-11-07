@@ -1,5 +1,6 @@
 <!--pages/require/require.wxml-->
 <view>
+ <view  class='gender'>申请探访信息</view>
   <van-cell-group>  
     <van-cell title="姓名:" value="{{userInfo.name}}" />
     <van-cell title="读经:" value="{{userInfo.readingClassics}}" />

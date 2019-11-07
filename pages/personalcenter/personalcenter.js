@@ -1,4 +1,5 @@
 // pages/personalcenter/personalcenter.js
+var app = getApp();
 Page({
 
   /**
@@ -31,13 +32,13 @@ Page({
   },
 
   navToPersonInfo(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './personinfo/personinfo',
     })
   },
 
   navToRole(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../rolereset/rolereset',
     })
   },

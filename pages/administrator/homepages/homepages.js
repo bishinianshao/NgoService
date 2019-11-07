@@ -1,4 +1,5 @@
 // pages/administrator/homepages/homepages.js
+var app = getApp();
 Page({
 
   /**
@@ -7,31 +8,36 @@ Page({
   data: {
 
   },
+  toUser() {
+    app.router.navigateTo({
+      url: '../../homepages/homepages',
+    })
+  },
 
   toRoleAudit : function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../roleaudit/roleaudit',
     })
   },
 
   toRegistrationAudit : function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../registrationaudit/registrationaudit',
     })
   },
   toRequireAudit : function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../requireaudit/requireaudit',
     })
   },
   toApplyAudit : function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../applyaudit/applyaudit',
     })
   },
 
   navFollowAudit : function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../followaudit/followaudit',
     })
   },

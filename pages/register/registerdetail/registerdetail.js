@@ -1,4 +1,5 @@
 // pages/register/registerdetail/registerdetail.js
+var app = getApp();
 Page({
 
   /**
@@ -108,7 +109,7 @@ Page({
     console.log(this.data.birthDate)
     console.log(this.data.driverInforArr)
     console.log(this.data.vistorExp)
-    wx.navigateTo({
+    app.router.navigateTo({
       url: '../registersuccess/registersuccess',
     })
   },

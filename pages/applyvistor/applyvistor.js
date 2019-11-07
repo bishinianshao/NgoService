@@ -1,4 +1,4 @@
-
+var app = getApp();
 Page({
 
   /**
@@ -19,7 +19,7 @@ Page({
   },
   //报名
   signup() {
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './applydetail/applydetail',
     })
   },

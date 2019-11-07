@@ -1,4 +1,5 @@
 // pages/administrator/applyaudit/applyaudit.js
+var app = getApp();
 Page({
 
   /**
@@ -18,7 +19,7 @@ Page({
   },
 
   toDetail : function(){
-    wx.navigateTo({
+    app.router.navigateTo({
       url: './applydetail/applydetail',
     })
   },

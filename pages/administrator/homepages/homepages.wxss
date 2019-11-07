@@ -8,3 +8,21 @@
   position: relative;
   padding-left: 30rpx
 }
+.btn{
+  padding-left: 520rpx;
+  margin-top: 400rpx;
+}
+.button{
+  width: 90%;
+  margin-bottom:20rpx;
+  margin-left: 10px;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: burlywood;
+  color: white;
+  float: left;
+  font-size: 35rpx;
+}

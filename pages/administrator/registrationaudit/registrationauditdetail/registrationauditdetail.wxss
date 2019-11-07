@@ -2,11 +2,30 @@
 page{
  background: #f3f7f7;
 }
+.containerchild{
+  display: flex
+}
 .gender{
   font-size: 40rpx;
   padding-left: 35rpx;
   color: black;
   font-weight: bold;
+}
+
+.driver{
+  font-size: 40rpx;
+  padding-left: 35rpx;
+  color: black;
+  font-weight: bold;
+  padding-right: 350rpx;
+}
+
+.visitor{
+  font-size: 40rpx;
+  padding-left: 35rpx;
+  color: black;
+  font-weight: bold;
+  padding-right: 310rpx;
 }
 .section{
   padding-left: 35rpx;

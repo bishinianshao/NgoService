@@ -36,7 +36,8 @@
   font-size: 35rpx;
 }
 .info1{
-  padding-left: 70rpx
+  padding-left: 82rpx;
+  font-size: 35rpx;
 }
 .checkbox{
   display: flex;
