@@ -20,6 +20,49 @@ Page({
     app.router.navigateTo({
       url: '../homepages/homepages',
     })
+    wx.login({
+      success: function (r) {
+        var code = r.code; //登录凭证
+        console.log(r)
+        if (code) {
+          //2、调用获取用户信息接口
+          wx.getUserInfo({
+            success: function (res) {
+              //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
+              wx.request({
+                url: 'http://222.195.149.104:8080/login',
+                method: 'post',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                  encryptedData: res.encryptedData,
+                  iv: res.iv,
+                  code: code
+                },
+                success: function (data) {
+                  console.log(data)
+                  console.log("data====" + data.data)
+                  //进行处理
+                },
+                fail: function () {
+                  console.log('系统错误')
+                  app.globalData.hasUserInfo = false
+                }
+              })
+            },
+            fail: function () {
+              console.log('获取用户信息失败')
+            }
+          })
+        } else {
+          console.log('获取用户登录态失败！' + r.errMsg)
+        }
+      },
+      fail: function () {
+        console.log("登陆失败")
+      }
+    })
   },
 
   getUserInfo: function (e) {
@@ -35,7 +78,7 @@ Page({
             success: function (res) {
               //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
               wx.request({
-                url: 'http://222.195.149.104:8080/ngo_servlet/LoginSe',
+                url: 'http://222.195.149.104:8080/login',
                 method: 'post',
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'

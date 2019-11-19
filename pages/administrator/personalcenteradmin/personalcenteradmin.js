@@ -1,12 +1,11 @@
-// pages/administrator/homepages/homepages.js
-var app = getApp();
+// pages/administrator/personalcenteradmin/personalcenteradmin.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    active: 2,
   },
 
   onChange(event) {
@@ -31,39 +30,6 @@ Page({
     }
   },
 
-  toUser() {
-    app.router.navigateTo({
-      url: '../../homepages/homepages',
-    })
-  },
-
-  toRoleAudit : function(){
-    app.router.navigateTo({
-      url: '../roleaudit/roleaudit',
-    })
-  },
-
-  toRegistrationAudit : function(){
-    app.router.navigateTo({
-      url: '../registrationaudit/registrationaudit',
-    })
-  },
-  toRequireAudit : function(){
-    app.router.navigateTo({
-      url: '../requireaudit/requireaudit',
-    })
-  },
-  toApplyAudit : function(){
-    app.router.navigateTo({
-      url: '../applyaudit/applyaudit',
-    })
-  },
-
-  navFollowAudit : function(){
-    app.router.navigateTo({
-      url: '../followaudit/followaudit',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
