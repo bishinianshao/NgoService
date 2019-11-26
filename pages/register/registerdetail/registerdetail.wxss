@@ -3,7 +3,10 @@ page{
 }
 .gender{
   font-size: 35rpx;
-  padding-left: 35rpx
+  padding-left: 35rpx;
+  background-color: #fff;
+  padding-bottom: 25rpx;
+  padding-top: 25rpx;
 }
 .select_box{
  background: #fff;
@@ -58,6 +61,7 @@ page{
   padding-left: 35rpx;
   padding-top: 40rpx;
   padding-bottom: 20rpx;
+  background-color: white
 }
 .section__title{
   font-size: 35rpx;
@@ -72,6 +76,9 @@ page{
 }
 .checkbox{
   font-size: 35rpx;
+  background-color: white;
+  padding-bottom: 25rpx;
+  padding-top: 25rpx;
 }
 .button{
   width: 90%;
@@ -90,4 +97,9 @@ page{
 
 .pickerdetail{
   padding-left: 145rpx;
+}
+.divLine{
+ background: #F3F3F3;
+ width: 98%;
+ height: 1rpx;
 }

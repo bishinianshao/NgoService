@@ -1,5 +1,6 @@
 // pages/register/register.js
 var app = getApp();
+import Toast from '../../Component/vant/toast/toast';
 Page({
 
   /**
@@ -13,17 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   handleGetUserInfo() {
-    app.router.navigateTo({
-      url: '../homepages/homepages',
-    })
     wx.login({
       success: function (r) {
         var code = r.code; //登录凭证
-        console.log(r)
+        console.log(code)
         if (code) {
           //2、调用获取用户信息接口
           wx.getUserInfo({
@@ -33,69 +30,34 @@ Page({
                 url: 'http://222.195.149.104:8080/login',
                 method: 'post',
                 header: {
-                  'content-type': 'application/x-www-form-urlencoded'
+                  'content-type': 'application/json'
                 },
                 data: {
                   encryptedData: res.encryptedData,
                   iv: res.iv,
                   code: code
                 },
-                success: function (data) {
-                  console.log(data)
-                  console.log("data====" + data.data)
+                success: function (res) {
+                  console.log(1111111)
+                  console.log(res)
                   //进行处理
+                  console.log(res.data.userInfo)
+                  app.globalData.sessionId = res.data.token
+                  if (res.data.userInfo.state == 1){
+                    var role = res.data.userInfo.role
+                    app.router.navigateTo({
+                      url: '../homepages/homepages?role='+role,
+                    })
+                  }
+                  else if (res.data.userInfo.state == -1 ) {
+                    Toast('请注册')
+                  }
+                  else if (res.data.userInfo.state == 0 ){
+                    Toast('请等待审核')
+                  }
                 },
                 fail: function () {
                   console.log('系统错误')
-                  app.globalData.hasUserInfo = false
-                }
-              })
-            },
-            fail: function () {
-              console.log('获取用户信息失败')
-            }
-          })
-        } else {
-          console.log('获取用户登录态失败！' + r.errMsg)
-        }
-      },
-      fail: function () {
-        console.log("登陆失败")
-      }
-    })
-  },
-
-  getUserInfo: function (e) {
-    var _this = this
-    // 登录
-    wx.login({
-      success: function (r) {
-        var code = r.code; //登录凭证
-        console.log(r)
-        if (code) {
-          //2、调用获取用户信息接口
-          wx.getUserInfo({
-            success: function (res) {
-              //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
-              wx.request({
-                url: 'http://222.195.149.104:8080/login',
-                method: 'post',
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                data: {
-                  encryptedData: res.encryptedData,
-                  iv: res.iv,
-                  code: code
-                },
-                success: function (data) {
-                  console.log(data)
-                  console.log("data====" + data.data)
-                  //进行处理
-                },
-                fail: function () {
-                  console.log('系统错误')
-                  app.globalData.hasUserInfo = false
                 }
               })
             },
@@ -114,9 +76,9 @@ Page({
   },
 
   handleRegister(data){
-    if (data.detail.rawData) {
+    /*if (data.detail.rawData) {
       this.getUserInfo()
-    }
+    }*/
     app.router.navigateTo({
       url: './registerdetail/registerdetail',
     })

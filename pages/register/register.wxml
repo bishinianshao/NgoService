@@ -3,7 +3,7 @@
   <view>
     <button class="logon" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">微信登录</button>
   </view>
-
+  <van-toast id="van-toast" />
   <view>
     <button  class="register" open-type="getUserInfo" bindgetuserinfo="handleRegister">使用微信账号注册</button>
   </view>

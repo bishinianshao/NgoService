@@ -1,43 +1,35 @@
-// pages/administrator/registrationaudit/registrationaudit.js
-var app = getApp();
+// pages/personalcenter/personinfo/personinfo.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    auditlist: []
-  },
-
-  toAuditDetail: function (e) {
-    console.log(e.currentTarget.dataset.content)
-    app.router.navigateTo({
-      url: './registrationauditdetail/registrationauditdetail?index=' + e.currentTarget.dataset.content,
-    })
+    user: null,
+    gender: ['女', '男'],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.sessionId)
     var that = this
     wx.request({
-      url: 'http://222.195.149.104:8080/registrationAudit/formList',
+      url: 'http://222.195.149.104:8080/user/personalInfo',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
-        token: app.globalData.sessionId
+        token: app.globalData.sessionId,
       },
       success: function (res) {
         console.log(res)
         //进行处理
-        wx.setStorageSync("registrationList", res.data.userInfos)
-        that.data.auditlist = res.data.userInfos
         that.setData({
-          userInfos: res.data.userInfos
+          userInfo: res.data,
+          gender: that.data.gender[res.data.gender]
         })
       },
       fail: function () {

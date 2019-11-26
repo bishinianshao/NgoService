@@ -1,4 +1,4 @@
-// pages/administrator/registrationaudit/registrationaudit.js
+// pages/administrator/useraudit/useraudit.js
 var app = getApp();
 Page({
 
@@ -6,39 +6,65 @@ Page({
    * 页面的初始数据
    */
   data: {
-    auditlist: []
+    roleId : 0,
   },
 
-  toAuditDetail: function (e) {
-    console.log(e.currentTarget.dataset.content)
-    app.router.navigateTo({
-      url: './registrationauditdetail/registrationauditdetail?index=' + e.currentTarget.dataset.content,
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(app.globalData.sessionId)
+  onClick(e){
+    console.log(e.detail.index)
+    this.data.roleId = e.detail.index
     var that = this
     wx.request({
-      url: 'http://222.195.149.104:8080/registrationAudit/formList',
+      url: 'http://222.195.149.104:8080/userManagement/userList',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
-        token: app.globalData.sessionId
+        token: app.globalData.sessionId,
+        roleId: e.detail.index+1
       },
       success: function (res) {
-        console.log(res)
+        console.log(res.data)
         //进行处理
-        wx.setStorageSync("registrationList", res.data.userInfos)
-        that.data.auditlist = res.data.userInfos
         that.setData({
           userInfos: res.data.userInfos
-        })
+        });
+        wx.setStorageSync("userAuditList", res.data.userInfos)
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
+  },
+
+  toAuditDetail(e){
+    console.log(e)
+    app.router.navigateTo({
+      url: './userauditdetail/userauditdetail?index=' + e.currentTarget.dataset.content + '&roleId=' + this.data.roleId,
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this
+    wx.request({
+      url: 'http://222.195.149.104:8080/userManagement/userList',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        roleId: 1
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+        that.setData({
+          userInfos: res.data.userInfos
+        });
+        wx.setStorageSync("userAuditList", res.data.userInfos)
       },
       fail: function () {
         console.log('系统错误')

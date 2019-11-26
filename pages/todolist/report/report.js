@@ -1,4 +1,7 @@
 // pages/todolist/report/report.js
+var app = getApp();
+var util = require('../../../utils/util.js');
+var upFiles = require('../../../utils/upFiles.js');
 Page({
 
   /**
@@ -8,14 +11,98 @@ Page({
     imgs: [],//本地图片地址数组
     picPaths: [],//网络路径
     src : '',
-    report:"",
-    pray:"",
+
     tempImagePaths : [],
-    tempVideoPaths : ''
+    tempVideoPaths : '',
+
+
+    upImgArr: [], //存图片
+    maxUploadLen: 9,  //限制上传数量
+    upVideoArr: [], //存视频
+    upFilesBtn: true,
+    report: "",
+    pray: "",
+    upPra : {
+      url : "111.192.102.1",
+      filesPathsArr : [],
+      name :'file',
+      formData : null,
+      startIndex : 0,
+      successNumber  : 0,
+      failNumber : 0,
+      completeNumber : 0
+    }
   },
 
+  // 选择图片或者视频
+  uploadFiles(e) {
+    var that = this,
+      type = e.currentTarget.dataset.type,
+      maxUploadLen = that.data.maxUploadLen;
+      //maxUploadVidLen = that.data.maxUploadVidLen;
+    if (type == 'image') {
+      upFiles.chooseImage(that, maxUploadLen);
+    } else if (type == 'video') {
+      upFiles.chooseVideo(that, maxUploadLen);
+    }
+  },
+
+  // 删除上传图片 或者视频
+  del(e) {
+    let that = this;
+    wx.showModal({
+      title: '温馨提示',
+      content: '您确认要删除吗？',
+      success(res) {
+        if (res.confirm) {
+          let delNum = e.currentTarget.dataset.index,
+            delType = e.currentTarget.dataset.type,
+            upImgArr = that.data.upImgArr,
+            upVideoArr = that.data.upVideoArr;
+          if (delType == 'image') {
+            upImgArr.splice(delNum, 1)
+            that.setData({
+              upImgArr: upImgArr
+            })
+          } else if (delType == 'video') {
+            upVideoArr.splice(delNum, 1)
+            that.setData({
+              upVideoArr: upVideoArr
+            })
+          }
+          //console.log(that)
+          let upFilesArr = upFiles.getPathArr(that);
+          if (upFilesArr.length < that.data.maxUploadLen) {
+            that.setData({
+              upFilesBtn: true,
+            })
+          }
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  // 预览图片
+  previewImg(e) {
+    let that = this,
+      imgsrc = e.currentTarget.dataset.presrc,
+      arr = that.data.upImgArr,
+      preArr = [];
+    arr.map(function (v, i) {
+      preArr.push(v.path)
+    })
+    //console.log(preArr)
+    wx.previewImage({
+      current: imgsrc,
+      urls: preArr
+    })
+  },
+
+
   //添加上传图片
-  chooseImageTap: function () {
+  /*chooseImageTap: function () {
     var that = this;
     wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
@@ -30,9 +117,9 @@ Page({
         }
       }
     })
-  },
+  },*/
   // 图片本地路径
-  chooseWxImage: function (type) {
+  /*chooseWxImage: function (type) {
     var that = this;
     var imgsPaths = that.data.imgs;
     wx.chooseImage({
@@ -47,7 +134,7 @@ Page({
         //that.upImgs(res.tempFilePaths[0], 0) //调用上传方法
       }
     })
-  },
+  },*/
   //上传服务器
   /*upImgs: function (imgurl, index) {
     var that = this;
@@ -72,7 +159,7 @@ Page({
   },*/
 
   //选择视频
-  chooseVideoTap: function () {
+  /*chooseVideoTap: function () {
     var that = this;
     wx.showActionSheet({
       itemList: ['从手机中选择', '用相机拍摄'],
@@ -88,9 +175,9 @@ Page({
         }
       }
     })
-  },
+  },*/
   // 视频本地路径
-  chooseWxVideo: function (type) {
+  /*chooseWxVideo: function (type) {
     console.log(type)
     var that = this;
     wx.chooseVideo({
@@ -105,7 +192,7 @@ Page({
         })
         //that.uploadvideo(that.data.src)
       }
-    })
+    })*/
    /* wx.chooseVideo({
       sourceType: ['album'],
       maxDuration: 60,
@@ -113,8 +200,8 @@ Page({
       success(res) {
         console.log(res.tempFilePath)
       }
-    })*/
-  },
+    })
+  },*/
   //上传视频 
  /* uploadvideo: function (videourl) {
     var src = this.data.src;
@@ -156,13 +243,18 @@ Page({
 
   //提交探访汇报
   sumbit(){
+    let upFilesArr = upFiles.getPathArr(this);
+    this.data.upPra.filesPathsArr = upFilesArr
+    console.log(upFilesArr)
     console.log(this.data.report)
     console.log(this.data.pray)
+    upFiles.upFilesFun(this, this.data.upPra,0,this.toHome)
+  },
+  toHome(){
     wx.redirectTo({
       url: '../../homepages/homepages',
     })
   },
-
   //申请后期跟进
   follow(){
     console.log(this.data.report)

@@ -12,10 +12,11 @@ Page({
   onChange(event) {
     console.log(event.detail);
     //if (app.globalData.hasUserInfo)
+    var role = wx.getStorageSync("roleId")
     if (true) {
       if (event.detail == 0) {
         wx.redirectTo({
-          url: '../homepages/homepages',
+          url: '../homepages/homepages?role='+role,
         })
       } else if (event.detail == 1) {
         wx.redirectTo({

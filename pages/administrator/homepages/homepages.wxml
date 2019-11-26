@@ -25,8 +25,8 @@
         <view class="getrequire">后期跟进审核</view>
       </view>
       <view>
-        <van-icon size='200rpx' color='#DC6D6D' name="label" bindclick="navcompleted"/>
-        <view class="getrequire">历史记录</view>
+        <van-icon size='200rpx' color='#DC6D6D' name="label" bindclick="navUserAudit"/>
+        <view class="getrequire">人员管理</view>
       </view>
       </view>   
   </view>

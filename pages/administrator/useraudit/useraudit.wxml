@@ -1,0 +1,74 @@
+<!--pages/administrator/useraudit/useraudit.wxml-->
+<van-tabs type="card" bindclick='onClick'>
+  <van-tab name='ordinary' title="一般" >
+    <view wx:for="{{userInfos}}" wx:key="index">
+        <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
+          <view class="b1">
+            <view class="name">
+              <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
+                <view class="cu-tag badge" wx:if=""></view>
+              </view>
+            </view>
+            <view class="content">
+              <view>
+                <text class="MailContent">{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+    </view>
+  </van-tab>
+  <van-tab title="司机">
+      <view wx:for="{{userInfos}}" wx:key="index">
+        <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
+          <view class="b1">
+            <view class="name">
+              <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
+                <view class="cu-tag badge" wx:if=""></view>
+              </view>
+            </view>
+            <view class="content">
+              <view>
+                <text class="MailContent">{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+    </view>
+  </van-tab>
+  <van-tab title="探访员">
+      <view wx:for="{{userInfos}}" wx:key="index">
+        <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
+          <view class="b1">
+            <view class="name">
+              <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
+                <view class="cu-tag badge" wx:if=""></view>
+              </view>
+            </view>
+            <view class="content">
+              <view>
+                <text class="MailContent">{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+    </view>
+  </van-tab>
+  <van-tab title="双重">
+      <view wx:for="{{userInfos}}" wx:key="index">
+        <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
+          <view class="b1">
+            <view class="name">
+              <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
+                <view class="cu-tag badge" wx:if=""></view>
+              </view>
+            </view>
+            <view class="content">
+              <view>
+                <text class="MailContent">{{item.name}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+    </view></van-tab>
+</van-tabs>

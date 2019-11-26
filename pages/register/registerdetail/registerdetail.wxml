@@ -19,7 +19,7 @@
       </view>
     </picker>
   </view>
-
+  <view class="divLine"></view>
   <view class="section">
     <picker mode="date" value="{{date}}" start="1920-01-01" end="2017-09-01" bindchange="bindDateChange">
       <view class="picker">
@@ -72,14 +72,14 @@
       label="配偶信仰:"
       bindchange="onChange"
     />
-    <van-field
-      id = "7"
-      value="{{value}}"
-      clearable
-      label="所属会堂:"
-      bindchange="onChange"
-    />
   </van-cell-group>
+  <view class="section">
+    <picker mode="selector" range="{{hallNameData}}" bindchange="bindHallChange">
+      <view class="picker">
+        所属会堂:<view class="pickerdetail">{{hallNameData[hallIndex]}}</view>
+      </view>
+    </picker>
+  </view>
 </view>
 
 <view>
@@ -132,9 +132,10 @@
 
 <view wx:if = "{{isVistors}}">
   <view class='gender'>探访员信息</view>
+  <view class="divLine"></view>
   <view class="section">
    <textarea 
-    style='width:600rpx; font-size: 35rpx;' 
+    style='width:600rpx; font-size: 35rpx; background-color: #fff;' 
     placeholder='请输入探访经历' 
     maxlength='-1' 
     value="{{content}}"
@@ -143,7 +144,7 @@
    </textarea>
   </view>
 </view>
-
+<van-toast id="van-toast" />
 <view>
   <button class="button" bindtap='sumbit'>
     <view>提交</view>

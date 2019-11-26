@@ -30,45 +30,52 @@ Page({
       Toast('请先完成登录');
     }
   },
-
+  //用户功能
   toUser() {
     app.router.navigateTo({
-      url: '../../homepages/homepages',
+      url: '../../homepages/homepages?role=5',
     })
   },
-
+  //角色审核
   toRoleAudit : function(){
     app.router.navigateTo({
       url: '../roleaudit/roleaudit',
     })
   },
-
+  //注册审核
   toRegistrationAudit : function(){
     app.router.navigateTo({
       url: '../registrationaudit/registrationaudit',
     })
   },
+  //需求审核
   toRequireAudit : function(){
     app.router.navigateTo({
       url: '../requireaudit/requireaudit',
     })
   },
+  //探访审核
   toApplyAudit : function(){
     app.router.navigateTo({
       url: '../applyaudit/applyaudit',
     })
   },
-
+  //后期跟进审核
   navFollowAudit : function(){
     app.router.navigateTo({
       url: '../followaudit/followaudit',
+    })
+  },
+  //人员管理
+  navUserAudit(){
+    app.router.navigateTo({
+      url: '../useraudit/useraudit',
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**

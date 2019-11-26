@@ -1,0 +1,8 @@
+/* pages/administrator/personalcenteradmin/personinfo/personinfo.wxss */
+.con{
+  padding-left: 30rpx
+}
+.personalcenter{
+  margin-left: 230rpx;
+  margin-bottom: 20rpx;
+}

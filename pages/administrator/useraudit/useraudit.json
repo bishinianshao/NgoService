@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-tab": "../../../Component/vant/tab/index",
+    "van-tabs": "../../../Component/vant/tabs/index"
+  }
+}

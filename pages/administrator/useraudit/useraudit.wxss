@@ -1,0 +1,62 @@
+/* pages/administrator/useraudit/useraudit.wxss */
+.add_icon {
+  position: fixed;
+  width: 84rpx;
+  height: 84rpx;
+  bottom: 100rpx;
+  right: 36rpx;
+  z-index: 999
+}
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.b1{
+  padding: 30rpx 30rpx 20rpx;
+  margin: 7rpx 0 6rpx 0;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 5px #eeeeee;
+  display: flex;
+  flex-direction: row;
+}
+.name{
+  font-size: 33rpx;
+  left: 0;
+  height: 50rpx;
+  display: inline-block;
+}
+.time{
+  position: absolute;
+  font-size: 26rpx;
+  right: 0rpx;
+}
+.content{
+  padding: 10rpx 0 0 0;
+}
+
+.nameText{
+  display:block;
+  font-size: 28rpx;
+  color: rgba(136, 130, 130, 0.822);
+  margin-left: 35rpx;
+}
+.MailContent{
+  display: block;
+  padding-bottom: 10rpx;
+  margin: 0rpx 0rpx 20rpx 35rpx;
+  padding: 10rpx 0 0 0;
+  width: 530rpx;
+  font-size: 35rpx;
+  color: #5b5b5b;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: keep-all;
+  word-wrap: break-word;
+  line-height: 40rpx;
+}

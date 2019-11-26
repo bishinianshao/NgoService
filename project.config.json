@@ -6,6 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -18,12 +19,11 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"enhance": true
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.2",
-	"appid": "wxa3053dc34b32fa98",
+	"libVersion": "2.9.3",
+	"appid": "wx4428c0fb5d2d7166",
 	"projectname": "ngoservice",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -48,9 +48,28 @@
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/register/registerdetail/registerdetail",
+					"pathName": "pages/register/registerdetail/registerdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/administrator/homepages/homepages",
+					"pathName": "pages/administrator/homepages/homepages",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

@@ -2,7 +2,7 @@
 <view>
   <view class="reset">
      <view class='section'>司机角色变更</view>
-     <van-icon style="padding-top : 15rpx;padding-left : 35rpx"  name="contact" />
+     <van-icon style="padding-top : 15rpx;padding-left : 35rpx"  color="green" name="manager" />
      <van-switch style="padding-left: 200rpx;padding-top:10rpx" checked="{{ checked1 }}" size="22px" active-color="#07c160" bind:change="onChange1" />
      
   </view>
@@ -10,9 +10,8 @@
 
   <view class="reset">
      <view class='section'>探访员角色变更</view>
-     <van-icon style="padding-top : 15rpx;" name="contact" />
+     <van-icon style="padding-top : 15rpx;" color="red" name="manager" />
      <van-switch style="padding-left: 200rpx;padding-top:10rpx" checked="{{ checked2 }}" size="22px" active-color="#07c160" bind:change="onChange2" />
-
   </view>
   <view class="divLine"></view>
   

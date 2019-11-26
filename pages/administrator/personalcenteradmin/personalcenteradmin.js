@@ -1,4 +1,5 @@
 // pages/administrator/personalcenteradmin/personalcenteradmin.js
+var app = getApp()
 Page({
 
   /**
@@ -30,6 +31,11 @@ Page({
     }
   },
 
+  navToPersonInfo(){
+    app.router.navigateTo({
+      url: './personinfo/personinfo',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

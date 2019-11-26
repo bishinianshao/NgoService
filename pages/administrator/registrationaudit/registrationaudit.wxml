@@ -1,6 +1,6 @@
 
-   <view wx:for="{{auditlist}}" wx:key="index">
-        <navigator  bindtap='toAuditDetail'>
+   <view wx:for="{{userInfos}}" wx:key="index">
+        <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
           <view class="b1">
             <view class="name">
               <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
@@ -10,7 +10,7 @@
             <view class="content">
               <view>
                 <text class="MailContent">姓名 : {{item.name}}</text>
-                <text class='nameText'>{{item.date}}</text>
+                <text class='nameText'>{{item.address}}</text>
               </view>
             </view>
           </view>

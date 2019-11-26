@@ -1,6 +1,9 @@
-/* pages/administrator/roleaudit/roleauditdetail/roleauditdetail.wxss */
+/* pages/administrator/useraudit/userauditdetail/userauditdetail.wxss */
 page{
  background: #f3f7f7;
+}
+.containerchild{
+  display: flex
 }
 .gender{
   font-size: 40rpx;
@@ -27,20 +30,17 @@ page{
   padding-right: 310rpx;
   background-color: white;
 }
-
 .section{
   padding-left: 35rpx;
   padding-top: 40rpx;
   padding-bottom: 20rpx;
-  background-color: white;
 }
-
 .section__title{
   font-size: 35rpx;
 }
 
 .button1{
-  width: 40%;
+  width: 80%;
   margin-bottom:20rpx;
   margin-left: 25px;
   border-radius: 98rpx;
@@ -52,22 +52,4 @@ page{
   color: white;
   float: left;
   font-size: 35rpx;
-}
-
-.button2{
-  width: 40%;
-  margin-bottom:20rpx;
-  margin-left: 10px;
-  border-radius: 98rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: red;
-  color: white;
-  float: left;
-  font-size: 35rpx;
-}
-.containerchild{
-  display: flex
 }

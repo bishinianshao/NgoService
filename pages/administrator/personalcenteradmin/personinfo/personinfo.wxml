@@ -1,0 +1,12 @@
+<!--pages/personalcenter/personinfo/personinfo.wxml-->
+<van-cell-group>
+  <van-cell title="姓名" value="{{userInfo.name}}" />
+  <van-cell title="性别" value="{{gender}}" />
+  <van-cell title="出生日期" value="{{userInfo.birthdayStr}}" />
+  <van-cell title="家庭住址" value="{{userInfo.address}}" />
+  <van-cell title="联系方式" value="{{userInfo.phone}}" />
+  <van-cell title="信主年份" value="{{userInfo.believeTime}}" />
+  <van-cell title="空闲时间" value="{{userInfo.freeTime}}" />
+  <van-cell title="配偶信仰" value="{{userInfo.spouseBelief}}" />
+  <van-cell title="所属会堂" value="{{userInfo.hall.name}}" />
+</van-cell-group>

@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/register/register",
-    "pages/index/index",
     "pages/register/registerdetail/registerdetail",
     "pages/register/registersuccess/registersuccess",
     "pages/homepages/homepages",
@@ -28,7 +27,10 @@
     "pages/administrator/applyaudit/applydetail/applydetail",
     "pages/administrator/followaudit/followaudit",
     "pages/administrator/followaudit/followdetail/followdetail",
-    "pages/administrator/personalcenteradmin/personalcenteradmin"
+    "pages/administrator/personalcenteradmin/personalcenteradmin",
+    "pages/administrator/useraudit/useraudit",
+    "pages/administrator/useraudit/userauditdetail/userauditdetail",
+    "pages/administrator/personalcenteradmin/personinfo/personinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

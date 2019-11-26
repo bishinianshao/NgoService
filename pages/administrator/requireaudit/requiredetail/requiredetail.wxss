@@ -9,6 +9,7 @@
   padding-left: 35rpx;
   color: black;
   font-weight: bold;
+  background-color: white;
 }
 .button1{
   width: 40%;
