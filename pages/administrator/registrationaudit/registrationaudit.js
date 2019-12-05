@@ -23,7 +23,7 @@ Page({
     console.log(app.globalData.sessionId)
     var that = this
     wx.request({
-      url: 'http://222.195.149.104:8080/registrationAudit/formList',
+      url: app.globalData.ipAdress +'registrationAudit/formList',
       method: 'post',
       header: {
         'content-type': 'application/json'

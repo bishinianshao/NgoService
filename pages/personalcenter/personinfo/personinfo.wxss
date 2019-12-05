@@ -32,27 +32,21 @@ page{
   padding-left: 35rpx;
   padding-top: 40rpx;
   padding-bottom: 20rpx;
+  background-color: white
 }
 .section__title{
   font-size: 35rpx;
+  color: black
 }
-
-.button1{
-  width: 40%;
-  margin-bottom:20rpx;
-  margin-left: 25px;
-  border-radius: 98rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: green;
-  color: white;
-  float: left;
+.picker{
   font-size: 35rpx;
+  display: flex;
 }
-.button2{
-  width: 40%;
+.pickerdetail{
+  padding-left: 145rpx;
+}
+.button{
+  width: 90%;
   margin-bottom:20rpx;
   margin-left: 10px;
   border-radius: 98rpx;
@@ -60,7 +54,7 @@ page{
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: green;
   color: white;
   float: left;
   font-size: 35rpx;

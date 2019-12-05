@@ -90,9 +90,9 @@
       class="checkbox" 
       wx:for="{{ list }}"
       wx:key="index"
-      name="{{ item }}"
+      name="{{ item.key }}"
     >
-     {{ item }}
+     {{ item.name }}
     </van-checkbox>
   </van-checkbox-group>
 
@@ -139,8 +139,7 @@
     placeholder='请输入探访经历' 
     maxlength='-1' 
     value="{{content}}"
-    auto-focus
-    bindinput='contentChange'>   
+    bindinput="contentChange">   
    </textarea>
   </view>
 </view>

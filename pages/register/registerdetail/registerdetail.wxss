@@ -72,7 +72,8 @@ page{
 }
 .checkboxgroup{
   display: flex;
-  padding-left: 35rpx
+  padding-left: 35rpx;
+  background-color: white;
 }
 .checkbox{
   font-size: 35rpx;

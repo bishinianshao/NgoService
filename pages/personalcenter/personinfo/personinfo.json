@@ -5,7 +5,7 @@
         "van-button": "../../../Component/vant/button/index",
         "van-cell": "../../../Component/vant/cell/index",
         "van-collapse": "../../../Component/vant/collapse/index",
-        "van-switch": "../../../Component/vant/switch/index",
-        "van-collapse-item": "../../../Component/vant/collapse-item/index"
+        "van-collapse-item": "../../../Component/vant/collapse-item/index",
+        "van-toast": "../../../Component/vant/toast/index"
   }
 }

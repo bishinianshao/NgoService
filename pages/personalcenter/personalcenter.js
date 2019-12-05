@@ -12,7 +12,7 @@ Page({
   onChange(event) {
     console.log(event.detail);
     //if (app.globalData.hasUserInfo)
-    var role = wx.getStorageSync("roleId")
+    var role = wx.getStorageSync("rangeRoles")
     if (true) {
       if (event.detail == 0) {
         wx.redirectTo({

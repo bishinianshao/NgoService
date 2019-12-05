@@ -29,28 +29,28 @@ Page({
     this.data.userInfo = userInfos[options.index]
     console.log(this.data.userInfo)
     switch (options.roleId) {
-      case '0': this.setData({
+      case '1': this.setData({
                 userInfo: this.data.userInfo,
                 isDriver: false,
                 isVistors: false,
                 gender: that.data.gender[this.data.userInfo.gender]
               })
               break;
-      case '1': this.setData({
+      case '2': this.setData({
                 userInfo: this.data.userInfo,
                 isDriver: true,
                 isVistors: false,
                 gender: that.data.gender[this.data.userInfo.gender]
               })
                break;
-      case '2': this.setData({
+      case '3': this.setData({
                 userInfo: this.data.userInfo,
                 isDriver: false,
                 isVistors: true,
                 gender: that.data.gender[this.data.userInfo.gender]
               })
               break;
-      case '3': this.setData({
+      case '4': this.setData({
                 userInfo: this.data.userInfo,
                 isDriver: true,
                 isVistors: true,

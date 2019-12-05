@@ -12,7 +12,7 @@ Page({
   },
 
   onChange(event) {
-    console.log(event.detail);
+    //console.log(event.detail);
     //if (app.globalData.hasUserInfo)
      if(true){
       if (event.detail == 0) {
@@ -58,17 +58,21 @@ Page({
 
   toAdministraror(){
     app.router.navigateTo({
-      url: '../administrator/homepages/homepages',
+      url: '../administrator/homepages/homepages?roles='+this.data.role,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //console.log(options)
-    wx.setStorageSync("roleId", options.role)
+    var that = this
+    //console.log(options.role.toString())
+    wx.setStorageSync("rangeRoles", options.role.toString())  //进行用户是管理员 志愿者 普通人员的判断
+    this.data.role = options.role.toString()
     this.setData({
-      role: options.role
+      role: that.data.role,
+      isVolunteer: that.data.role.includes('2'),
+      isAdministrator: that.data.role.includes('3')
     })
   },
 

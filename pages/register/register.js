@@ -27,8 +27,8 @@ Page({
             success: function (res) {
               //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
               wx.request({
-                url: 'http://222.195.149.104:8080/login',
-                method: 'post',
+                url: app.globalData.ipAdress+'login',
+                method: 'POST',
                 header: {
                   'content-type': 'application/json'
                 },
@@ -38,7 +38,6 @@ Page({
                   code: code
                 },
                 success: function (res) {
-                  console.log(1111111)
                   console.log(res)
                   //进行处理
                   console.log(res.data.userInfo)
@@ -75,7 +74,7 @@ Page({
     })
   },
 
-  handleRegister(data){
+  handleRegister(){
     /*if (data.detail.rawData) {
       this.getUserInfo()
     }*/

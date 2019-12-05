@@ -1,6 +1,6 @@
 <!--pages/administrator/useraudit/useraudit.wxml-->
 <van-tabs type="card" bindclick='onClick'>
-  <van-tab name='ordinary' title="一般" >
+  <van-tab name='101' title="一般" >
     <view wx:for="{{userInfos}}" wx:key="index">
         <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
           <view class="b1">
@@ -18,7 +18,7 @@
         </navigator>
     </view>
   </van-tab>
-  <van-tab title="司机">
+  <van-tab name='201' title="司机">
       <view wx:for="{{userInfos}}" wx:key="index">
         <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
           <view class="b1">
@@ -36,7 +36,7 @@
         </navigator>
     </view>
   </van-tab>
-  <van-tab title="探访员">
+  <van-tab name='202' title="探访员">
       <view wx:for="{{userInfos}}" wx:key="index">
         <navigator  bindtap='toAuditDetail' url='' data-content="{{index}}">
           <view class="b1">

@@ -1,12 +1,49 @@
-<!--pages/personalcenter/personinfo/personinfo.wxml-->
-<van-cell-group>
-  <van-cell title="姓名" value="{{userInfo.name}}" />
-  <van-cell title="性别" value="{{gender}}" />
-  <van-cell title="出生日期" value="{{userInfo.birthdayStr}}" />
-  <van-cell title="家庭住址" value="{{userInfo.address}}" />
-  <van-cell title="联系方式" value="{{userInfo.phone}}" />
-  <van-cell title="信主年份" value="{{userInfo.believeTime}}" />
-  <van-cell title="空闲时间" value="{{userInfo.freeTime}}" />
-  <van-cell title="配偶信仰" value="{{userInfo.spouseBelief}}" />
-  <van-cell title="所属会堂" value="{{userInfo.hall.name}}" />
-</van-cell-group>
+<view>
+ <view class='gender'>人员信息 ： </view>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange">
+   <van-collapse-item  title="    " name="1" icon="manager">
+    <van-cell-group>
+      <van-cell title="姓名:" value="{{userInfo.name}}" />
+      <van-cell title="性别:" value="{{gender}}" />
+      <van-cell title="出生日期:" value="{{userInfo.birthdayStr}}" />
+      <van-cell title="家庭住址:" value="{{userInfo.address}}" />
+      <van-cell title="联系方式:" value="{{userInfo.phone}}" />
+      <van-cell title="信主年份:" value="{{userInfo.believeTime}}" />
+      <van-cell title="空闲时间:" value="{{userInfo.freeTime}}" />
+      <van-cell title="配偶信仰:" value="{{userInfo.spouseBelief}}" />
+      <van-cell title="所属会堂:" value="{{userInfo.hall.name}}" />
+    </van-cell-group>
+   </van-collapse-item>
+  </van-collapse>
+</view>
+
+<view>
+  <view  wx:if = "{{isDriver}}">
+    <view class="containerchild">
+      <view class='driver'>司机信息 ： </view>
+      <van-switch checked="{{ checked1 }}"  active-color="#07c160" size="24px" bind:change="onChangeSwitch1" />
+    </view>
+    <van-cell-group>
+      <van-cell title="车牌号:" value="{{userInfo.carNumber}}" />
+      <van-cell title="可载人数:" value="{{userInfo.carInfo}}" />
+      <van-cell title="熟悉区域:" value="{{userInfo.familiarArea}}" />
+    </van-cell-group>
+  </view>
+</view>
+
+<view wx:if = "{{isVistors}}">
+  <view class="containerchild">
+      <view class='visitor'>探访员信息 ： </view>
+      <van-switch checked="{{ checked2 }}"  active-color="#07c160" size="24px" bind:change="onChangeSwitch2" />
+  </view>
+  <view class="section">
+   <textarea 
+    style='width:600rpx; font-size: 35rpx;'  
+    maxlength='-1' 
+    value="{{userInfo.visitingExperience}}"
+    auto-height 
+    disabled='true'
+    bindinput='contentChange'>   
+   </textarea>
+  </view>
+</view>

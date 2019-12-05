@@ -11,25 +11,26 @@
       <view class="getrequire">待完成订单</view>
       </view> 
     </view>    
-      <view class="usercontatiner">
-      <view wx:if = "{{role > 1}}">
+    <view class="usercontatiner" wx:if = "{{isVolunteer}}">
+      <view>
         <van-icon size='200rpx' color='red' name="like" bindclick="navapply"/>
         <view class="getrequire">参与探访</view>
       </view>
-      <view  wx:if = "{{role > 1}}">
+      <view>
         <van-icon size='200rpx' color='red' name="clock" bindclick="navtodo"/>
         <view class="getrequire">探访任务</view>
       </view>
-      <view  wx:if = "{{role > 1}}">
+      <view>
         <van-icon size='200rpx' color='red' name="checked" bindclick="navcompleted"/>
         <view class="getrequire">已完成任务</view>
       </view>
       </view>         
-  </view>
+    </view>
   <view class="btn">
-    <button  wx:if = "{{role == 5}}" class="button" bindtap='toAdministraror'>管理员</button>
+    <button  wx:if = "{{isAdministrator}}" class="button" bindtap='toAdministraror'>管理员</button>
   </view>
   <van-toast id="van-toast" />
+
   <view>
       <van-tabbar active="{{ active }}" active-color="#07c160" bind:change="onChange">
           <van-tabbar-item name="home" icon="home-o">首页</van-tabbar-item>

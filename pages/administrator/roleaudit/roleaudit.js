@@ -6,30 +6,61 @@ Page({
    * 页面的初始数据
    */
   data: {
-    auditlist: [
-      {
-        name: "张三",
-        date: '2019-10-07',
-        role: '探访员'
-      },
-      {
-        name: "李四",
-        date: '2019-10-08',
-        role: '司机'
-      },
-    ]
+    list: [{
+      name: '一般',
+      key: 101
+    },
+    {
+      name: '司机',
+      key: 201
+    },
+    {
+      name: '探访员',
+      key: 202
+    }],
+    roleId : []
   },
 
-  toAuditDetail:function(){
+  toAuditDetail:function(e){
+    console.log(e)
     app.router.navigateTo({
-      url: './roleauditdetail/roleauditdetail',
+      url: './roleauditdetail/roleauditdetail?index=' + e.currentTarget.dataset.content + '&roleId=' + this.data.roleId[e.currentTarget.dataset.content]
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'userManagement/userRolesAuditList',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId
+      },
+      success: function (res) {
+        console.log(res.data.waitReviewUser)
+        //进行处理
+        var waitReviewUser = res.data.waitReviewUser
+        var waitReviewUserRoleList = new Array()
+        for (var i = 0; i < waitReviewUser.length; i++){
+          waitReviewUserRoleList[i] = waitReviewUser[i].waitReviewRoles
+          that.data.roleId[i] = waitReviewUser[i].roleId
+        }
+        //console.log(waitReviewUserRoleList)
+        that.setData({
+          waitReviewUser: res.data.waitReviewUser,
+          waitReviewUserRoleList: waitReviewUserRoleList
+        });
+        wx.setStorageSync("waitReviewUser", res.data.waitReviewUser)
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

@@ -33,7 +33,7 @@ Page({
   //用户功能
   toUser() {
     app.router.navigateTo({
-      url: '../../homepages/homepages?role=5',
+      url: '../../homepages/homepages?role=' + wx.getStorageSync("rangeRoles"),
     })
   },
   //角色审核

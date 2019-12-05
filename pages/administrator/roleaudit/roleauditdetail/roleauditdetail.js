@@ -1,42 +1,66 @@
 //pages/administrator/roleaudit/roleauditdetail/roleauditdetail.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{
-      name: "张三",
-      gender: "男",
-      birthdate: "1988-02-05",
-      address: "山东省青岛市崂山区",
-      phone: "2010-10-10",
-      believeyear: "2011",
-      freetime: "周六",
-      spousebelief: "无",
-      hall:"崂山会堂"
-    },
-    driverInfor:{
-      numberplates : "鲁B21K0214",
-      passengers : "5",
-      familiararea : "市南区"
-    },
-    content : '探访经历',
-    isDriver: true,
-    isVistors: true,
+    isDriver: false,
+    isVistors: false,
+    driverWaitting : false,
+    vistorsWaitting: false,
+    driverAble : false,
+    vistorsAble : false,
     activeNames: ['1', '2', '3'],
+    gender: ['女', '男'],
+    throughRoleIds : [],
+    rejectRoleIds : [],
+    userId : null,
     checked1: true,
     checked2: true
   },
-
+  //司机状态改变
   onChangeSwitch1({ detail }) {
+    var that = this
     // 需要手动对 checked 状态进行更新
     this.setData({ checked1: detail });
+    if (detail == true){
+      that.data.throughRoleIds.push(201)
+      var index = that.data.rejectRoleIds.indexOf(201)
+      if (index > -1) {
+        that.data.rejectRoleIds.splice(index, 1)
+      }
+      //console.log('throughRoleIds' + that.data.throughRoleIds + '---------------' + 'rejectRoleIds' + that.data.rejectRoleIds)
+    }else {
+      var index = that.data.throughRoleIds.indexOf(201)
+      if (index > -1) {
+        that.data.throughRoleIds.splice(index, 1)
+      }
+      that.data.rejectRoleIds.push(201)
+      //console.log('throughRoleIds' + that.data.throughRoleIds + '---------------' + 'rejectRoleIds' + that.data.rejectRoleIds)
+    }
   },
-
+  //探访员状态改变
   onChangeSwitch2({ detail }) {
-    // 需要手动对 checked 状态进行更新
+    var that = this
     this.setData({ checked2: detail });
+    // 需要手动对 checked 状态进行更新
+    if (detail == true) {
+      var index = that.data.rejectRoleIds.indexOf(202)
+      if (index > -1) {
+        that.data.rejectRoleIds.splice(index, 1)
+      }
+      that.data.throughRoleIds.push(202)
+      //console.log('throughRoleIds' + that.data.throughRoleIds + '---------------' + 'rejectRoleIds' + that.data.rejectRoleIds)
+    } else {
+      that.data.rejectRoleIds.push(202)
+      var index = that.data.throughRoleIds.indexOf(202);
+      if (index > -1) {
+        that.data.throughRoleIds.splice(index, 1);
+      }
+      //console.log('throughRoleIds' + that.data.throughRoleIds + '---------------' + 'rejectRoleIds' + that.data.rejectRoleIds)
+    }
   },
 
   onChange(event) {
@@ -46,23 +70,87 @@ Page({
   },
 
   pass : function(){
-    console.log(1111111)
-    wx.redirectTo({
-      url: '../../roleaudit/roleaudit',
+    var that = this
+    console.log('throughRoleIds' + this.data.throughRoleIds + '---------------' + 'rejectRoleIds' + this.data.rejectRoleIds)
+    wx.request({
+      url: app.globalData.ipAdress + 'userManagement/userRolesAuditList',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        userId : that.data.userId,
+        throughRoleIds: that.data.throughRoleIds,
+        rejectRoleIds: that.data.rejectRoleIds
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
     })
+    /*wx.redirectTo({
+      url: '../../roleaudit/roleaudit',
+    })*/
   },
 
   reject :function (){
-    console.log(2222222)
-    wx.redirectTo({
+    var throughRoleIds = this.data.rejectRoleIds
+    var rejectRoleIds = this.data.throughRoleIds
+    console.log('throughRoleIds' + throughRoleIds + '---------------' + 'rejectRoleIds' + rejectRoleIds)
+    /*wx.redirectTo({
       url: '../../roleaudit/roleaudit',
-    })
+    })*/
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    var userInfos = new Array()
+    userInfos = wx.getStorageSync("waitReviewUser") 
+    this.data.userInfo = userInfos[options.index]
+    console.log(this.data.userInfo)
+    this.data.userId = this.data.userInfo.userId
+    var roleAudited = this.data.userInfo.roleId
+    var roleWaitting = this.data.userInfo.waitReviewRoles
+    this.data.driverWaitting = roleWaitting.some(function (item) {
+      if (item.roleId == 201) {
+      that.data.throughRoleIds.push(201)
+      return true;
+    }})
+    this.data.vistorsWaitting = roleWaitting.some(function (item) {
+      if (item.roleId == 202) {
+        that.data.throughRoleIds.push(202)
+        return true
+    }})
+    if (roleAudited.includes(201) || this.data.driverWaitting == true){
+      that.setData({
+        isDriver: true,
+      })
+      if (roleAudited.includes(201)) {
+        that.setData({
+          driverAble: true,
+        })
+      }
+    }
+    if (roleAudited.includes(202) || this.data.vistorsWaitting == true) {
+      that.setData({
+        isVistors: true,
+      })
+      if (roleAudited.includes(202)){
+        that.setData({
+          vistorsAble: true,
+        })
+      }
+    }
+    that.setData({
+      userInfo: that.data.userInfo,
+      gender: that.data.gender[that.data.userInfo.gender]
+    })
   },
 
   /**

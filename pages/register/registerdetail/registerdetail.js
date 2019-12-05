@@ -12,7 +12,14 @@ Page({
     index: null,//选择的下拉列表下标
     userInforArr : [],
     birthDate : null,
-    list: ['司机', '探访员'],
+    list: [{
+        name: '司机',
+        key : 201
+      },
+      {
+        name: '探访员',
+        key: 202
+    }],
     result: [],
     isDriver : false,
     isVistors : false,
@@ -49,7 +56,8 @@ Page({
       //探访经历
       visitingExperience : ""
     },
-    roles :[1]
+    roles :['101'],
+    volunteers:[]
   },
 
 
@@ -59,7 +67,7 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'http://222.195.149.104:8080/findAllHallInfo',
+      url: app.globalData.ipAdress +'findAllHallInfo',
       method: 'post',
       header: {
         'content-type': 'application/json'
@@ -67,10 +75,10 @@ Page({
       success: function (res) {
         console.log(res)
         var hallName = new Array()
-        that.data.hallData = res.data
-        wx.setStorageSync("hall", res.data)
-        for(var i = 0; i< res.data.length; i++){
-            hallName[i] = res.data[i].name
+        that.data.hallData = res.data.halls
+        wx.setStorageSync("hall", res.data.halls)
+        for (var i = 0; i < res.data.halls.length; i++){
+          hallName[i] = res.data.halls[i].name
         }
         that.setData({
           hallNameData: hallName
@@ -119,25 +127,20 @@ Page({
   //复选框爱心角色选项
   onNextChange(e) {
     var that =this
-    console.log(e.detail.length)
-
     for(var i = 0; i < e.detail.length;i++){
-      if(e.detail[i] == "司机"){
+      if(e.detail[i] == "201"){
         that.data.isDriver = true
-        that.data.roles = [1,2]
       }
-      else if(e.detail[i] == "探访员"){
+      else if(e.detail[i] == "202"){
         that.data.isVistors = true
-        that.data.roles = [1,3]
       }
     }
     if(e.detail.length ==0){
       that.data.isVistors = false
       that.data.isDriver = false
-      that.data.roles = [1]
     }
     else if (e.detail.length == 1){
-      if (e.detail == "司机"){
+      if (e.detail == "201"){
         that.data.isDriver = true
         that.data.isVistors = false
       }
@@ -146,15 +149,21 @@ Page({
         that.data.isDriver = false
       }
     }
-    else if (e.detail.length == 2){
-        that.data.roles = [1,2,3]
-    }
+    /*if (e.detail.includes('201')){
+      that.data.isDriver = true
+    } else if (e.detail.includes('202')){
+      that.data.isVistors = true
+    } else {
+      that.data.isVistors = false
+      that.data.isDriver = false
+    }*/
+    //console.log(e.detail) 
+    that.data.volunteers =e.detail
     this.setData({
       result: e.detail,
       isDriver: that.data.isDriver,
       isVistors: that.data.isVistors
     });
-
   },
 
   //司机注册信息
@@ -164,7 +173,7 @@ Page({
   },
   //探访员注册信息
   contentChange(e){
-    //console.log(e.detail)
+    console.log(e.detail)
     this.setData({
       content: e.detail.value
     })
@@ -201,8 +210,7 @@ Page({
     }
     this.data.userInfo.visitingExperience = this.data.vistorExp
     console.log(this.data.userInfo)
-    console.log(this.data.roles)
-
+    console.log(this.data.roles.concat(that.data.volunteers))
     wx.login({
       success: function (r) {
         var code = r.code; //登录凭证
@@ -213,7 +221,7 @@ Page({
             success: function (res) {
               //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
               wx.request({
-                url: 'http://222.195.149.104:8080/register',
+                url: app.globalData.ipAdress +'register',
                 method: 'post',
                 header: {
                   'content-type': 'application/json'
@@ -223,14 +231,14 @@ Page({
                   iv: res.iv,
                   code: code,
                   userInfo: that.data.userInfo,
-                  roles: that.data.roles
+                  roles: that.data.roles.concat(that.data.volunteers)
                 },
                 success: function (data) {
                   console.log(data)
                   console.log("data====" + data.data)
                   //进行处理
                   app.router.navigateTo({
-                    url: './registersuccess/registersuccess',
+                    url: '../registersuccess/registersuccess',
                   })
                 },
                 fail: function () {

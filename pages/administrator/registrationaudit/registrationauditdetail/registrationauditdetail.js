@@ -7,8 +7,9 @@ Page({
    */
   data: {
     info : [],
-    isDriver: true,
-    isVistors: true,
+    gender: ['女', '男'],
+    isDriver: false,
+    isVistors: false,
     activeNames: ['1', '2', '3'],
     checked1: true,
     checked2: true,
@@ -22,17 +23,17 @@ Page({
     console.log(that.data.roleArr)
     if (detail == false){
       if (that.data.roleArr.length == 2){
-        that.data.roleArr = [1]
+        that.data.roleArr = [101]
       }
       else {
-        that.data.roleArr = [1,3]
+        that.data.roleArr = [101,202]
       }
     } else {
       if (that.data.roleArr.length == 2 && that.data.info.carNumber != '') {
-        that.data.roleArr = [1,2,3]
+        that.data.roleArr = [101,201,202]
       }
       else if (that.data.roleArr.length == 1 && that.data.info.carNumber != '') {
-        that.data.roleArr = [1,2]
+        that.data.roleArr = [101,201]
       }
     }
   },
@@ -44,17 +45,17 @@ Page({
     this.setData({ checked2: detail });
     if (detail == false) {
       if (that.data.roleArr.length == 2) {
-        that.data.roleArr = [1]
+        that.data.roleArr = [101]
       }
       else {
-        that.data.roleArr = [1, 2]
+        that.data.roleArr = [101, 201]
       }
     } else {
       if (that.data.roleArr.length == 2 && that.data.info.visitingExperience != undefined) {
-        that.data.roleArr = [1, 2, 3]
+        that.data.roleArr = [101, 201, 202]
       }
       else if (that.data.roleArr.length == 1 && that.data.info.visitingExperience != undefined) {
-        that.data.roleArr = [1, 3]
+        that.data.roleArr = [101, 202]
       }
     }
   },
@@ -70,7 +71,7 @@ Page({
     this.data.info.roles = this.data.roleArr
     console.log(app.globalData.sessionId)
     wx.request({
-      url: 'http://222.195.149.104:8080/registrationAudit/agree',
+      url: app.globalData.ipAdress +'registrationAudit/agree',
       method: 'post',
       header: {
         'content-type': 'application/json'
@@ -98,7 +99,7 @@ Page({
     this.data.info.roles = this.data.roleArr
     console.log(this.data.info)
     wx.request({
-      url: 'http://222.195.149.104:8080/registrationAudit/reject',
+      url: app.globalData.ipAdress + 'registrationAudit/reject',
       method: 'post',
       header: {
         'content-type': 'application/json'
@@ -123,25 +124,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     console.log(options)
-    console.log(wx.getStorageSync("registrationList"))
+
     var registrationList = new Array()
     registrationList = wx.getStorageSync("registrationList")
     this.data.info = registrationList[options.index]
-    console.log(this.data.info.roles)
-    this.data.roleArr = this.data.info.roles
+    console.log(this.data.info)
+    this.data.roleArr = this.data.info.roleId
 
-    if (this.data.roleArr.length == 3){
+    if (this.data.roleArr.includes(201)){
+      this.setData({
+        isDriver: true,
+      })
+    }
+    if (this.data.roleArr.includes(202)) {
+      this.setData({
+        isVistors: true,
+      })
+    }
+    /*if (this.data.roleArr.length == 2){
       this.setData({
         isDriver: true,
         isVistors: true,
       })
-    } else if (this.data.roleArr.length == 2 && this.data.roleArr[1] == 2){
+    } else if (this.data.roleArr.length == 1 && this.data.roleArr[0] == 201){
       this.setData({
         isDriver: true,
         isVistors: false,
       })
-    } else if (this.data.roleArr.length == 2 && this.data.roleArr[1] == 3){
+    } else if (this.data.roleArr.length == 1 && this.data.roleArr[0] == 202){
       this.setData({
         isDriver: false,
         isVistors: true,
@@ -151,9 +163,10 @@ Page({
         isDriver: false,
         isVistors: false,
       })
-    }
+    }*/
     this.setData({
-      userInfo: registrationList[options.index]
+      userInfo: registrationList[options.index],
+      gender: that.data.gender[registrationList[options.index].gender]
     })
 
   },

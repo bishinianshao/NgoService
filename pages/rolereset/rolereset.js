@@ -1,30 +1,131 @@
 // pages/rolereset/rolereset.js
 import Toast from '../../Component/vant/toast/toast';
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    checked1: true,
-    checked2 : false
+    isDriver: false,
+    isVisitor : false,
+    userRoles : [],
+    driverIndex : null,
+    visitorIndex : null
   },
 
 
   onChange1({ detail }) {
     // 需要手动对 checked 状态进行更新
-    console.log(detail)
-    this.setData({ checked1: detail });
+    var that = this
+    this.setData({ isDriver: detail })
+    /*if (detail == true){
+      if (that.data.driverIndex == -1) {
+        that.data.userRoles.push({
+          applyTimeStr: new Date(),
+          roleId: 201,
+          state: 0,
+          userId: "",
+          userRoleId: that.data.userRoles[0].userId,
+        })
+      } else {
+        that.data.userRoles[that.data.driverIndex].state = 1
+      }
+    } else 
+    {
+      if (that.data.driverIndex == -1){
+        that.data.userRoles.pop()
+      }
+      else  that.data.userRoles[that.data.driverIndex].state = 3
+    }*/
+    if (detail == true){
+      if (that.data.driverIndex == -1) {
+        that.data.userRoles.push({
+          applyTimeStr: new Date(),
+          roleId: 201,
+          state: 1,
+          userId: "",
+          userRoleId: that.data.userRoles[0].userId,
+        })
+      } else {
+        that.data.userRoles[that.data.driverIndex].state = 1
+      }
+    } else 
+    {
+      if (that.data.driverIndex == -1){
+        that.data.userRoles.pop()
+      }
+      else  that.data.userRoles[that.data.driverIndex].state = 0
+    }
   },
 
   onChange2({ detail }) {
+
     // 需要手动对 checked 状态进行更新
-    console.log(detail)
-    this.setData({ checked2: detail });
+    var that = this
+    this.setData({ isVisitor: detail });
+    /*if (detail == true) {
+      if (that.data.visitorIndex == -1) {
+        that.data.userRoles.push({
+          applyTimeStr: new Date(),
+          roleId: 202,
+          state: 0,
+          userId: "",
+          userRoleId: that.data.userRoles[0].userId,
+        })
+      } else {
+        that.data.userRoles[that.data.visitorIndex].state = 1
+      }
+    } else {
+      if (that.data.driverIndex == -1) {
+        that.data.userRoles.pop()
+      }
+      else{
+        that.data.userRoles[that.data.visitorIndex].state = 3
+      }  
+    }*/
+    if (detail == true) {
+      if (that.data.visitorIndex == -1) {
+        that.data.userRoles.push({
+          applyTimeStr: new Date(),
+          roleId: 202,
+          state: 1,
+          userId: "",
+          userRoleId: that.data.userRoles[0].userId,
+        })
+      } else {
+        that.data.userRoles[that.data.visitorIndex].state = 1
+      }
+    } else {
+      if (that.data.driverIndex == -1) {
+        that.data.userRoles.pop()
+      }
+      else{
+        that.data.userRoles[that.data.visitorIndex].state = 0
+      }  
+    }
   },
 
   sumbit(){
-    console.log("提交成功")
+    console.log(this.data.userRoles)
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'user/modifyRoleState',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        userRoles :that.data.userRoles
+      },
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
     Toast('提交成功')
     wx.redirectTo({
       url: '../personalcenter/personalcenter',
@@ -34,7 +135,73 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'user/personalRoles',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+      },
+      success: function (res) {
+        console.log(res.data.userRoles)
+        that.data.userRoles = res.data.userRoles
+        var userRoles = new Array()
+        userRoles = res.data.userRoles
+        var driverIndex =  userRoles.findIndex(item => item.roleId == 201)
+        var visitorIndex = userRoles.findIndex(item => item.roleId == 202)
+        that.data.driverIndex = driverIndex
+        that.data.visitorIndex = visitorIndex
+        if (driverIndex != -1){
+          if (userRoles[driverIndex].state == 0){
+            that.setData({
+              driverDisabled : true
+            })
+          } else if (userRoles[driverIndex].state == 1){
+            that.setData({
+              driverDisabled: false,
+              isDriver : true
+            })
 
+          } else if (userRoles[driverIndex].state == 3){
+            that.setData({
+              driverDisabled: false,
+              isDriver: false
+            })
+          }
+          that.setData({
+            driverState: userRoles[driverIndex].state
+          })
+        }
+
+        if (visitorIndex != -1){
+          if (userRoles[visitorIndex].state == 0) {
+            that.setData({
+              visitorDisabled: true
+            })
+          } else if (userRoles[visitorIndex].state == 1) {
+            that.setData({
+              visitorDisabled: false,
+              isVisitor: true
+            })
+
+          } else if (userRoles[visitorIndex].state == 3) {
+            that.setData({
+              visitorDisabled: false,
+              isVisitor: false
+            })
+          }
+          that.setData({
+            visitorState: userRoles[visitorIndex].state
+          })
+        }
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

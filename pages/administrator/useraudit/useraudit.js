@@ -6,22 +6,50 @@ Page({
    * 页面的初始数据
    */
   data: {
-    roleId : 0,
+    roleIdList : [],
+    roleId : 1,
+    list: [{
+      name : '一般',
+      key : 101
+    },
+      {
+      name: '司机',
+      key: 201
+    },
+    {
+      name: '探访员',
+      key: 202
+    }],
   },
 
   onClick(e){
-    console.log(e.detail.index)
-    this.data.roleId = e.detail.index
+    //console.log(e)
     var that = this
+    switch (e.detail.title) {
+      case '一般': 
+        that.data.roleIdList = [101] 
+        that.data.roleId = 1
+        break;
+      case '司机': that.data.roleIdList = [101,201]
+        that.data.roleId = 2 
+        break;
+      case '探访员': that.data.roleIdList = [101,202]
+        that.data.roleId = 3 
+        break;
+      case '双重': that.data.roleIdList = [101,201,202] 
+        that.data.roleId = 4
+        break;
+      default: break
+    }
     wx.request({
-      url: 'http://222.195.149.104:8080/userManagement/userList',
+      url: app.globalData.ipAdress +'userManagement/userList',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
         token: app.globalData.sessionId,
-        roleId: e.detail.index+1
+        roleIdList: that.data.roleIdList
       },
       success: function (res) {
         console.log(res.data)
@@ -48,15 +76,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    this.data.roleIdList = [101]
     wx.request({
-      url: 'http://222.195.149.104:8080/userManagement/userList',
+      url: app.globalData.ipAdress +'userManagement/userList',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
         token: app.globalData.sessionId,
-        roleId: 1
+        roleIdList: [101]
       },
       success: function (res) {
         console.log(res.data)
