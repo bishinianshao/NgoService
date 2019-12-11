@@ -143,27 +143,6 @@ Page({
         isVistors: true,
       })
     }
-    /*if (this.data.roleArr.length == 2){
-      this.setData({
-        isDriver: true,
-        isVistors: true,
-      })
-    } else if (this.data.roleArr.length == 1 && this.data.roleArr[0] == 201){
-      this.setData({
-        isDriver: true,
-        isVistors: false,
-      })
-    } else if (this.data.roleArr.length == 1 && this.data.roleArr[0] == 202){
-      this.setData({
-        isDriver: false,
-        isVistors: true,
-      })
-    } else {
-      this.setData({
-        isDriver: false,
-        isVistors: false,
-      })
-    }*/
     this.setData({
       userInfo: registrationList[options.index],
       gender: that.data.gender[registrationList[options.index].gender]

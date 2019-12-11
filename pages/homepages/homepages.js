@@ -55,7 +55,18 @@ Page({
       url: '../completedlist/completedlist',
     })
   },
-
+  //待审核订单
+  navWaitingList (){
+    app.router.navigateTo({
+      url: '../visitedlist/visitedlist?states=0',
+    })
+  },
+  //待完成订单
+  navToCompleteList(){
+    app.router.navigateTo({
+      url: '../visitedlist/visitedlist?states=3',
+    })
+  },
   toAdministraror(){
     app.router.navigateTo({
       url: '../administrator/homepages/homepages?roles='+this.data.role,
@@ -66,7 +77,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    //console.log(options.role.toString())
     wx.setStorageSync("rangeRoles", options.role.toString())  //进行用户是管理员 志愿者 普通人员的判断
     this.data.role = options.role.toString()
     this.setData({

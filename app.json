@@ -30,7 +30,9 @@
     "pages/administrator/personalcenteradmin/personalcenteradmin",
     "pages/administrator/useraudit/useraudit",
     "pages/administrator/useraudit/userauditdetail/userauditdetail",
-    "pages/administrator/personalcenteradmin/personinfo/personinfo"
+    "pages/administrator/personalcenteradmin/personinfo/personinfo",
+    "pages/visitedlist/visitedlist",
+    "pages/visitedlist/listdetail/listdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,4 +1,5 @@
 // pages/administrator/requireaudit/requiredetail/requiredetail.js
+var app = getApp()
 Page({
 
   /**
@@ -6,19 +7,31 @@ Page({
    */
   data: {
     userInfo: {
-      name: "张三",
-      readingClassics: "读经内容",
-      visitDate: "2020-02-05",
-      pray: "祷告内容",
-      party: "聚会内容",
-      visitReason: "探访原因",
-      care: "关怀需要",
-      remarks: "备注信息"
+      visitingDemandId : null
     },
   },
 
   pass: function () {
     console.log(1111111)
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'demandManagement/agree',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: that.data.visitingDemandId
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
     wx.redirectTo({
       url: '../../requireaudit/requireaudit',
     })
@@ -26,6 +39,25 @@ Page({
 
   reject: function () {
     console.log(2222222)
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'demandManagement/reject',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: that.data.visitingDemandId
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
     wx.redirectTo({
       url: '../../requireaudit/requireaudit',
     })
@@ -35,7 +67,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'demandManagement/visitDemandDetails',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: options.visitDemandId
+      },
+      success: function (res) {
+        //进行处理
+        that.setData({
+          userInfo: res.data.visitDemandDetails
+        });
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
+    this.data.visitingDemandId = options.visitDemandId
   },
 
   /**

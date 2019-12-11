@@ -33,7 +33,7 @@ Page({
 
   navToPersonInfo(){
     app.router.navigateTo({
-      url: './personinfo/personinfo',
+      url: '../../personalcenter/personinfo/personinfo',
     })
   },
   /**

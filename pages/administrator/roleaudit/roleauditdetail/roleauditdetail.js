@@ -73,7 +73,7 @@ Page({
     var that = this
     console.log('throughRoleIds' + this.data.throughRoleIds + '---------------' + 'rejectRoleIds' + this.data.rejectRoleIds)
     wx.request({
-      url: app.globalData.ipAdress + 'userManagement/userRolesAuditList',
+      url: app.globalData.ipAdress + 'userManagement/submit',
       method: 'post',
       header: {
         'content-type': 'application/json'
@@ -92,18 +92,39 @@ Page({
         console.log('系统错误')
       }
     })
-    /*wx.redirectTo({
+    wx.redirectTo({
       url: '../../roleaudit/roleaudit',
-    })*/
+    })
   },
 
   reject :function (){
+    var that = this
     var throughRoleIds = this.data.rejectRoleIds
     var rejectRoleIds = this.data.throughRoleIds
     console.log('throughRoleIds' + throughRoleIds + '---------------' + 'rejectRoleIds' + rejectRoleIds)
-    /*wx.redirectTo({
+    wx.request({
+      url: app.globalData.ipAdress + 'userManagement/submit',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        userId: that.data.userId,
+        throughRoleIds: throughRoleIds,
+        rejectRoleIds: rejectRoleIds
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
+    wx.redirectTo({
       url: '../../roleaudit/roleaudit',
-    })*/
+    })
   },
   /**
    * 生命周期函数--监听页面加载

@@ -43,6 +43,12 @@ Page({
       url: '../rolereset/rolereset',
     })
   },
+  //已完成订单
+  navToCompleted(){
+    app.router.navigateTo({
+      url: '../visitedlist/visitedlist?states=4',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

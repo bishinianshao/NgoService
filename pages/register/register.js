@@ -44,6 +44,7 @@ Page({
                   app.globalData.sessionId = res.data.token
                   if (res.data.userInfo.state == 1){
                     var role = res.data.userInfo.role
+                    wx.setStorageSync("rolesId", res.data.userInfo.roleId)
                     app.router.navigateTo({
                       url: '../homepages/homepages?role='+role,
                     })

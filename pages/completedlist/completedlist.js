@@ -29,7 +29,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: app.globalData.ipAdress + 'user/viewVisitDemand',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        states : [0,1,2]
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

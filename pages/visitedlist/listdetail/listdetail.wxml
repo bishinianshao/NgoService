@@ -1,0 +1,47 @@
+<!--pages/visitedlist/listdetail.wxml-->
+<view class="con">
+  <view class="containerchild">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item  title="被探访者信息" name="1" icon="manager">
+        <van-cell-group >
+          <van-cell title="姓名" value="{{detailInfo.user.name}}" />
+          <van-cell title="读经" value="{{detailInfo.faithStatue_Read}}" />
+          <van-cell title="祷告" value="{{detailInfo.faithStatue_Prayer}}" />
+          <van-cell title="聚会" value="{{detailInfo.faithStatue_Meet}}" />
+          <van-cell title="探访时间" value="{{detailInfo.visitingTime}}" />
+          <van-cell title="探访原因" value="{{detailInfo.visitreason}}" />
+          <van-cell title="关怀需要" value="{{detailInfo.caringNeeds}}" />
+          <van-cell title="备注" value="{{detailInfo.visitingReportRemarks}}" />
+        </van-cell-group>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  <view class="divLine"></view>
+  <view class="containerchild">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item  title="司机信息"  name="2" icon="map-marked">
+        <view wx:for="{{drivers}}" wx:key="index">
+          <van-cell-group >
+            <van-cell title="姓名" value="{{item.name}}" />
+          </van-cell-group>
+        </view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  <view class="divLine"></view>
+
+  <view class="containerchild">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item  title="探访员信息"  name="3" icon="like">
+        <view wx:for="{{vistors}}" wx:key="index">
+          <van-cell-group >
+            <van-cell title="姓名" value="{{item.name}}" />
+          </van-cell-group>
+        </view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  
+</view>
+
+  

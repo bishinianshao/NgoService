@@ -1,25 +1,43 @@
 // pages/require/require.js
 import Toast from '../../Component/vant/toast/toast';
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    requireInfo:[],
+    requireInfo:{
+      //姓名
+      name: null,
+      //探访原因
+      visitingReason : null,
+      //关怀需求
+      caringNeeds: null,
+      //下发需求备注
+      deliveryDemandRemarks : null,
+      //探访时间
+      visitingTime: null,
+      //读经内容
+      faithStatue_Read: null,
+      //祷告内容
+      faithStatue_Prayer: null,
+      //聚会
+      faithStatue_Meet: null
+    },
     visitDate : null,
     remarks : null
   },
 
   //探访需求信息
   onChange(e){
-    this.data.requireInfo[e.target.id - 1] = e.detail
-    console.log(this.data.requireInfo)
+    //console.log(e)
+    this.data.requireInfo[e.currentTarget.dataset.model] = e.detail
   },
 
   //探访日期绑定值
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
@@ -28,7 +46,7 @@ Page({
 
   //备注
   contentChange(e) {
-    console.log(e.detail)
+    //console.log(e.detail)
     this.setData({
       content: e.detail.value
     })
@@ -36,12 +54,31 @@ Page({
   },
 
   sumbit(){
+    var that = this
+    this.data.requireInfo.visitingTime = this.data.visitDate
+    this.data.requireInfo.deliveryDemandRemarks = this.data.remarks
     console.log(this.data.requireInfo)
-    console.log(this.data.visitDate)
-    console.log(this.data.remarks)
     Toast('需求发布成功')
+    wx.request({
+      url: app.globalData.ipAdress + 'user/submitVisitDemand',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitDemand: that.data.requireInfo
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
     wx.redirectTo({
-      url: '../homepages/homepages',
+      url: '../homepages/homepages?role=' + wx.getStorageSync("rangeRoles"),
     })
   },
   /**

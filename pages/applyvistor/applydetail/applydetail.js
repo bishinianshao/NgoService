@@ -1,4 +1,4 @@
-
+var app = getApp()
 import Toast from '../../../Component/vant/toast/toast';
 Page({
 
@@ -24,9 +24,10 @@ Page({
       { name: "张飞" },
       { name: "王五" }
     ],
-    list: ['司机', '探访员'],
     result: [],
-    activeNames: ['1','2','3']
+    activeNames: ['1'],
+    isVistor :true,
+    isDriver : true
   },
   
   onChange(event) {
@@ -58,6 +59,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    console.log(options)
+    var roleId = wx.getStorageSync("rolesId")
+    if (roleId.includes(201)){
+      that.setData({
+        isDriver: false,
+        //result : ['201']
+      })
+    }
+    if (roleId.includes(202)){
+      that.setData({
+        isVistor: false,
+        //result: ['202']
+      })
+    }
+    wx.request({
+      url: app.globalData.ipAdress + 'volunteer/visitDemandDetails',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: options.visitDemandId
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+        that.setData({
+          visitDemandDetails: res.data.visitDemandDetails
+        })
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

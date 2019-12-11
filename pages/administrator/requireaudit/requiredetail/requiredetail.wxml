@@ -2,21 +2,20 @@
 <view>
  <view  class='gender'>申请探访信息</view>
   <van-cell-group>  
-    <van-cell title="姓名:" value="{{userInfo.name}}" />
-    <van-cell title="读经:" value="{{userInfo.readingClassics}}" />
-    <van-cell title="探访日期:" value="{{userInfo.visitDate}}" />
-    <van-cell title="祷告:" value="{{userInfo.pray}}" />
-    <van-cell title="聚会:" value="{{userInfo.party}}" />
-    <van-cell title="探访原因:" value="{{userInfo.visitReason}}" />
-    <van-cell title="关怀需要:" value="{{userInfo.care}}" />
+    <van-cell title="姓名:" value="{{userInfo.user.name}}" />
+    <van-cell title="读经:" value="{{userInfo.faithStatue_Read}}" />
+    <van-cell title="探访日期:" value="{{userInfo.applyTimeStr}}" />
+    <van-cell title="祷告:" value="{{userInfo.faithStatue_Prayer}}" />
+    <van-cell title="聚会:" value="{{userInfo.faithStatue_Meet}}" />
+    <van-cell title="探访原因:" value="{{userInfo.visitingReason}}" />
+    <van-cell title="关怀需要:" value="{{userInfo.caringNeeds}}" />
   </van-cell-group>
 <view class='section'>备注 :</view>
   <view class="section">
    <textarea 
     style='width:600rpx; font-size: 35rpx;' 
     maxlength='-1' 
-    value="{{userInfo.remarks}}"
-    auto-focus
+    value="{{userInfo.deliveryDemandRemarks}}"
     auto-height
     disabled='true'>   
    </textarea>

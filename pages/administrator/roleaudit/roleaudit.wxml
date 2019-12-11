@@ -11,7 +11,7 @@
               <view>
                 <text class="MailContent">姓名 : {{i.name}}</text>
                 <text class='MailContent' wx:for="{{waitReviewUserRoleList[index]}}" wx:key="index" wx:for-item="j">重置角色：{{j.name}}</text>
-                <text class='nameText'>{{i.date}}</text>
+                <text class='nameText' wx:for="{{waitReviewUserRoleList[index]}}" wx:key="index" wx:for-item="j">{{j.applyTimeStr}}</text>
               </view>
             </view>
           </view>

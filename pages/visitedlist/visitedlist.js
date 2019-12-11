@@ -5,46 +5,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    todolist: [
-      {
-        name: "张三",
-        date: '2019-10-07'
-      },
-      {
-        name: "李四",
-        date: '2019-10-08'
-      },
-    ],
-    visitDemandId: null,
-    visitDemandList: null
+    visitDemandId : null,
+    visitDemandList : null
   },
-  //报名
+  //详情
   signup(e) {
+    console.log(e)
     var visitDemandList = this.data.visitDemandList
     var visitDemandId = visitDemandList[e.currentTarget.dataset.content].visitingDemandId
     app.router.navigateTo({
-      url: './applydetail/applydetail?visitDemandId=' + visitDemandId
+      url: './listdetail/listdetail?visitDemandId=' + visitDemandId
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
+    var states = new Array()
+    states.push(Number.parseInt(options.states))
     wx.request({
-      url: app.globalData.ipAdress + 'volunteer/visitDemandList',
+      url: app.globalData.ipAdress + 'user/viewVisitDemand',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
-        token: app.globalData.sessionId
+        token: app.globalData.sessionId,
+        states: states
       },
       success: function (res) {
-        console.log(res.data.visitDemandList)
+        console.log(res.data)
         //进行处理
+        //wx.setStorageSync("visitList", res.data.visitDemandList)
         that.setData({
-          todolist: res.data.visitDemandList
+          visitList: res.data.visitDemandList
         })
         that.data.visitDemandList = res.data.visitDemandList
       },

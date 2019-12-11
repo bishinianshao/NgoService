@@ -1,52 +1,59 @@
-var app = getApp();
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    todolist: [
-      {
-        name: "张三",
-        date: '2019-10-07'
-      },
-      {
-        name: "李四",
-        date: '2019-10-08'
-      },
+    user: {
+      name: "王红",
+      reading: "读经内容",
+      pray: "祷告内容",
+      party: "聚会内容",
+      visittime: "2010-10-10",
+      visitreason: "探访原因",
+      careneed: "关怀需要",
+      remark: "备注"
+    },
+    drivers: [
+      { name: "张飞" },
+      { name: "刘备" }
     ],
-    visitDemandId: null,
-    visitDemandList: null
+    vistors: [
+      { name: "张飞" },
+      { name: "王五" }
+    ],
+    list: ['司机', '探访员'],
+    result: [],
+    activeNames: ['1', '2', '3']
   },
-  //报名
-  signup(e) {
-    var visitDemandList = this.data.visitDemandList
-    var visitDemandId = visitDemandList[e.currentTarget.dataset.content].visitingDemandId
-    app.router.navigateTo({
-      url: './applydetail/applydetail?visitDemandId=' + visitDemandId
-    })
+
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    });
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: app.globalData.ipAdress + 'volunteer/visitDemandList',
+      url: app.globalData.ipAdress + 'user/viewDemandDetails',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
-        token: app.globalData.sessionId
+        token: app.globalData.sessionId,
+        visitingDemandId: options.visitDemandId
       },
       success: function (res) {
-        console.log(res.data.visitDemandList)
         //进行处理
         that.setData({
-          todolist: res.data.visitDemandList
+          detailInfo: res.data.viewDemandDetails
         })
-        that.data.visitDemandList = res.data.visitDemandList
       },
       fail: function () {
         console.log('系统错误')

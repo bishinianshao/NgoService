@@ -7,7 +7,11 @@
       <view class="getrequire">探访需求</view>
       </view>
       <view>
-      <van-icon size='200rpx' color='green'  name="clock"  />
+      <van-icon size='200rpx' color='green' bindclick="navWaitingList" name="clock"  />
+      <view class="getrequire">待审核订单</view>
+      </view> 
+      <view>
+      <van-icon size='200rpx' bindclick="navToCompleteList" color='green'  name="clock"  />
       <view class="getrequire">待完成订单</view>
       </view> 
     </view>    
@@ -21,8 +25,8 @@
         <view class="getrequire">探访任务</view>
       </view>
       <view>
-        <van-icon size='200rpx' color='red' name="checked" bindclick="navcompleted"/>
-        <view class="getrequire">已完成任务</view>
+        <van-icon style="padding-left: 30rpx" size='200rpx' color='red' name="checked" bindclick="navcompleted"/>
+        <view class="getrequire" style="padding-left: 35rpx">已完成任务</view>
       </view>
       </view>         
     </view>
