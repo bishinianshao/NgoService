@@ -26,7 +26,7 @@
       <van-collapse-item  title="司机信息"  name="2" icon="map-marked">
       <view wx:for="{{visitDemandDetails.drivers}}" wx:key="index">
         <van-cell-group >
-          <van-cell title="姓名" value="{{item.name}}" />
+          <van-cell title="{{item.name}}" value="{{item.name}}" />
         </van-cell-group>
       </view>
       </van-collapse-item>
@@ -39,7 +39,7 @@
       <van-collapse-item  title="探访员信息"  name="3" icon="like">
         <view wx:for="{{visitDemandDetails.visitors}}" wx:key="index">
           <van-cell-group >
-            <van-cell title="姓名" value="{{item.name}}" />
+            <van-cell title="{{item.name}}" value="{{item.name}}" />
           </van-cell-group>
         </view>
       </van-collapse-item>
@@ -51,7 +51,7 @@
     <view class="info1">请选择担任角色</view>
     <van-checkbox-group class="checkboxgroup" value="{{ result }}" bind:change="onNextChange">
       <van-checkbox
-        class="checkbox" 
+        class="checkbox"
         name="201"
         style="font-size: 35rpx;margin-bottom:20rpx;margin-top: 15rpx;"
         disabled="{{isDriver}}">司机</van-checkbox>

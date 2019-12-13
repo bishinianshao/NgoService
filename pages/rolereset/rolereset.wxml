@@ -3,6 +3,7 @@
   <view class="reset">
     <view class='section'>司机角色变更</view>
     <van-icon wx:if = "{{driverState == 1 ||driverState == 3}}" style="padding-top : 15rpx;" color="green" name="manager" />
+    <van-icon wx:elif="{{driverState == 0}}" style="padding-top : 15rpx;" color="orange" name="manager" />
     <van-icon wx:else style="padding-top : 15rpx;" color="red" name="manager" />
     <van-switch style="padding-left: 200rpx;padding-top:10rpx" 
                 checked="{{ isDriver }}" 
@@ -16,6 +17,7 @@
   <view class="reset">
     <view class='section'>探访员角色变更</view>
     <van-icon wx:if = "{{visitorState == 1 || visitorState == 3}}" style="padding-top : 15rpx;" color="green" name="manager" />
+    <van-icon wx:elif="{{visitorState == 0}}" style="padding-top : 15rpx;" color="orange" name="manager" />
     <van-icon wx:else style="padding-top : 15rpx;" color="red" name="manager" />
     <van-switch style="padding-left: 200rpx;padding-top:10rpx" 
                 checked="{{ isVisitor }}" 

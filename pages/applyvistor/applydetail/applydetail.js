@@ -6,24 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: {
-      name: "张三",
-      reading: "读经内容",
-      pray: "祷告内容",
-      party: "聚会内容",
-      visittime: "2010-10-10",
-      visitreason: "探访原因",
-      careneed: "关怀需要",
-      remark: "备注"
-    },
-    drivers: [
-      { name: "张飞" },
-      { name: "刘备" }
-    ],
-    vistors: [
-      { name: "张飞" },
-      { name: "王五" }
-    ],
     result: [],
     activeNames: ['1'],
     isVistor :true,
@@ -65,13 +47,20 @@ Page({
     if (roleId.includes(201)){
       that.setData({
         isDriver: false,
-        //result : ['201']
+        result : ['201']
       })
     }
     if (roleId.includes(202)){
       that.setData({
         isVistor: false,
-        //result: ['202']
+        result: ['202']
+      })
+    }
+    if (roleId.includes(201) && roleId.includes(202)){
+      that.setData({
+        isVistor: false,
+        isDriver: false,
+        result: []
       })
     }
     wx.request({

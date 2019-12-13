@@ -5,16 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    todolist: [
-      {
-        name: "张三",
-        date: '2019-10-07'
-      },
-      {
-        name: "李四",
-        date: '2019-10-08'
-      },
-    ],
     visitDemandId: null,
     visitDemandList: null
   },
