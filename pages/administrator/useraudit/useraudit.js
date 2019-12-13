@@ -66,7 +66,7 @@ Page({
   },
 
   toAuditDetail(e){
-    console.log(e)
+    //console.log(e)
     app.router.navigateTo({
       url: './userauditdetail/userauditdetail?index=' + e.currentTarget.dataset.content + '&roleId=' + this.data.roleId,
     })
@@ -88,7 +88,7 @@ Page({
         roleIdList: [101]
       },
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data)
         //进行处理
         that.setData({
           userInfos: res.data.userInfos

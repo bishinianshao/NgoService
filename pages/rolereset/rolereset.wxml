@@ -1,37 +1,33 @@
 <!--pages/rolereset/rolereset.wxml-->
 <view>
   <view class="reset">
-     <view class='section'>司机角色变更</view>
-      <van-icon wx:if = "{{driverState == 1 ||driverState == 3}}" style="padding-top : 15rpx;" color="green" name="manager" />
-      <van-icon wx:else style="padding-top : 15rpx;" color="red" name="manager" />
-     <van-switch style="padding-left: 200rpx;padding-top:10rpx" 
-                 checked="{{ isDriver }}" 
-                 size="22px"
-                 disabled = "{{driverDisabled}}" 
-                 active-color="#07c160" 
-                 inactive-color="#ee0a24"
-                 bind:change="onChange1" />
-     
+    <view class='section'>司机角色变更</view>
+    <van-icon wx:if = "{{driverState == 1 ||driverState == 3}}" style="padding-top : 15rpx;" color="green" name="manager" />
+    <van-icon wx:else style="padding-top : 15rpx;" color="red" name="manager" />
+    <van-switch style="padding-left: 200rpx;padding-top:10rpx" 
+                checked="{{ isDriver }}" 
+                size="22px"
+                disabled = "{{driverDisabled}}" 
+                active-color="#07c160" 
+                inactive-color="#ee0a24"
+                bind:change="onChange1" />  
   </view>
   <view class="divLine"></view>
-
   <view class="reset">
-     <view class='section'>探访员角色变更</view>
-      <van-icon wx:if = "{{visitorState == 1 || visitorState == 3}}" style="padding-top : 15rpx;" color="green" name="manager" />
-      <van-icon wx:else style="padding-top : 15rpx;" color="red" name="manager" />
-     <van-switch style="padding-left: 200rpx;padding-top:10rpx" 
-                 checked="{{ isVisitor }}" 
-                 size="22px" 
-                 active-color="#07c160" 
-                 disabled = "{{visitorDisabled}}"
-                 inactive-color="#ee0a24"
-                 bind:change="onChange2" />
+    <view class='section'>探访员角色变更</view>
+    <van-icon wx:if = "{{visitorState == 1 || visitorState == 3}}" style="padding-top : 15rpx;" color="green" name="manager" />
+    <van-icon wx:else style="padding-top : 15rpx;" color="red" name="manager" />
+    <van-switch style="padding-left: 200rpx;padding-top:10rpx" 
+                checked="{{ isVisitor }}" 
+                size="22px" 
+                active-color="#07c160" 
+                disabled = "{{visitorDisabled}}"
+                inactive-color="#ee0a24"
+                bind:change="onChange2" />
   </view>
   <view class="divLine"></view>
-  
   <van-toast id="van-toast" />
   <view>
     <button class="button" bindtap='sumbit'>提交</button>
   </view>
-
 </view>

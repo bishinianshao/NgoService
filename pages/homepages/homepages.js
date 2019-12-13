@@ -77,12 +77,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    wx.setStorageSync("rangeRoles", options.role.toString())  //进行用户是管理员 志愿者 普通人员的判断
-    this.data.role = options.role.toString()
+    //console.log(options.role)
+    wx.setStorageSync("rangeRoles", options.role)  //进行用户是管理员 志愿者 普通人员的判断
+    this.data.role = options.role
     this.setData({
       role: that.data.role,
-      isVolunteer: that.data.role.includes('2'),
-      isAdministrator: that.data.role.includes('3')
+      isVolunteer: that.data.role.includes(2),
+      isAdministrator: that.data.role.includes(3)
     })
   },
 

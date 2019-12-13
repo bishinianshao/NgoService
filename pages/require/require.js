@@ -18,6 +18,8 @@ Page({
       deliveryDemandRemarks : null,
       //探访时间
       visitingTime: null,
+      //探访地点
+      visitAddress : null,
       //读经内容
       faithStatue_Read: null,
       //祷告内容

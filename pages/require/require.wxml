@@ -48,6 +48,14 @@
       id = "6"
       value="{{value}}"
       clearable
+      label="探访地点:"
+      data-model="visitAddress"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "7"
+      value="{{value}}"
+      clearable
       label="关怀需要:"
       data-model="caringNeeds"
       bindchange="onChange"

@@ -11,7 +11,7 @@
             <view class="content">
               <view>
                 <text class="MailContent">被探访者 : {{item.userName}}</text>
-                <text class='nameText'>{{item.applyTimeStr}}</text>
+                <text class='nameText'>{{item.visitingTimeStr}}</text>
               </view>
             </view>
           </view>

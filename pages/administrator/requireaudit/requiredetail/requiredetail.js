@@ -80,6 +80,7 @@ Page({
       },
       success: function (res) {
         //进行处理
+        console.log(res.data)
         that.setData({
           userInfo: res.data.visitDemandDetails
         });
