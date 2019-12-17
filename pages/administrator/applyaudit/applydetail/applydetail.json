@@ -5,6 +5,7 @@
     "van-cell": "../../../../Component/vant/cell/index",
     "van-cell-group": "../../../../Component/vant/cell-group/index",
     "van-collapse": "../../../../Component/vant/collapse/index",
-    "van-collapse-item": "../../../../Component/vant/collapse-item/index"
+    "van-collapse-item": "../../../../Component/vant/collapse-item/index",
+    "van-tag": "../../../../Component/vant/tag/index"
   }
 }

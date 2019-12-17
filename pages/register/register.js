@@ -38,7 +38,7 @@ Page({
                   code: code
                 },
                 success: function (res) {
-                  console.log(res)
+                  //console.log(res)
                   //进行处理
                   console.log(res.data.userInfo)
                   app.globalData.sessionId = res.data.token

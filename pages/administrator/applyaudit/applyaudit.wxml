@@ -1,7 +1,7 @@
 <!--pages/administrator/applyaudit/applyaudit.wxml-->
 
-<view wx:for="{{todolist}}" wx:key="index">
-    <navigator  bindtap='toDetail'>
+<view wx:for="{{visitDemandList}}" wx:key="index">
+    <navigator  bindtap='toDetail' url='' data-content="{{index}}">
       <view class="b1">
         <view class="name">
           <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
@@ -11,7 +11,7 @@
         <view class="content">
           <view>
             <text class="MailContent">被探访者 : {{item.name}}</text>
-            <text class='nameText'>{{item.date}}</text>
+            <text class='nameText'>{{item.visitingTimeStr}}</text>
           </view>
         </view>
       </view>

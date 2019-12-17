@@ -31,7 +31,7 @@ Page({
         token: app.globalData.sessionId
       },
       success: function (res) {
-        console.log(res.data.visitDemandList)
+        //console.log(res.data.visitDemandList)
         //进行处理
         that.setData({
           todolist: res.data.visitDemandList

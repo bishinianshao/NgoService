@@ -54,15 +54,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/administrator/roleaudit/roleauditdetail/roleauditdetail",
-					"pathName": "pages/administrator/roleaudit/roleauditdetail/roleauditdetail",
-					"query": "",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }

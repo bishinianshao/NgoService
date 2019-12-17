@@ -1,5 +1,5 @@
 <!--pages/administrator/roleaudit/roleaudit.wxml-->
-   <view wx:for="{{waitReviewUser}}" wx:key="index" wx:for-item="i">
+   <view wx:for="{{visitDemandList}}" wx:key="index" wx:for-item="i">
         <navigator url='' data-content="{{index}}"  bindtap='toAuditDetail'>
           <view class="b1">
             <view class="name">

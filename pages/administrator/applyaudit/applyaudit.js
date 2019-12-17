@@ -6,28 +6,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    todolist: [
-      {
-        name: "张三",
-        date: '2019-10-07'
-      },
-      {
-        name: "李四",
-        date: '2019-10-08'
-      },
-    ]
+    visitDemandId: null,
+    visitDemandList: null
   },
 
-  toDetail : function(){
+  toDetail : function(e){
+    var visitDemandList = this.data.visitDemandList
+    var visitDemandId = visitDemandList[e.currentTarget.dataset.content].visitingDemandId
     app.router.navigateTo({
-      url: './applydetail/applydetail',
+      url: './applydetail/applydetail?visitDemandId=' + visitDemandId
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'visitAudit/visitAuditList',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId
+      },
+      success: function (res) {
+        //console.log(res.data)
+        //进行处理
+        that.setData({
+          visitDemandList: res.data.visitDemandList
+        })
+        that.data.visitDemandList = res.data.visitDemandList
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

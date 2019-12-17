@@ -5,24 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: {
-      name: "王红",
-      reading: "读经内容",
-      pray: "祷告内容",
-      party: "聚会内容",
-      visittime: "2010-10-10",
-      visitreason: "探访原因",
-      careneed: "关怀需要",
-      remark: "备注"
-    },
-    drivers: [
-      { name: "张飞" },
-      { name: "刘备" }
-    ],
-    vistors: [
-      { name: "张飞" },
-      { name: "王五" }
-    ],
     list: ['司机', '探访员'],
     result: [],
     activeNames: ['1', '2', '3']

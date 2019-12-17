@@ -120,8 +120,8 @@ Page({
         userRoles :that.data.userRoles
       },
       success: function (res) {
-        console.log(res.data)
-        console.log(res.data.roleId)
+        //console.log(res.data)
+        //console.log(res.data.roleId)
         wx.setStorageSync("rolesId", res.data.roleId)
         /*if (res.data.roleId.includes(201) || res.data.roleId.includes(202)){
           wx.setStorageSync("rangeRoles", wx.getStorageSync("rangeRoles").push(2))

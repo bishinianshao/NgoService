@@ -10,7 +10,7 @@ Page({
   },
 
   toAuditDetail: function (e) {
-    console.log(e.currentTarget.dataset.content)
+    //console.log(e.currentTarget.dataset.content)
     app.router.navigateTo({
       url: './registrationauditdetail/registrationauditdetail?index=' + e.currentTarget.dataset.content,
     })

@@ -8,6 +8,7 @@ Page({
   data: {
     result: [],
     activeNames: ['1'],
+    visitDemandId : null,
     isVistor :true,
     isDriver : true
   },
@@ -26,14 +27,31 @@ Page({
   },
 
   sumbit() {
-    console.log(this.data.result)
-    Toast('报名成功')
+    var that = this
     if (this.data.result.length == 0) {
       Toast('请至少选择一个角色')
     }
     else {
+      wx.request({
+        url: app.globalData.ipAdress + '/volunteer/enroll',
+        method: 'post',
+        header: {
+          'content-type': 'application/json'
+        },
+        data: {
+          token: app.globalData.sessionId,
+          visitingDemandId: that.data.visitDemandId,
+          roleIds: that.data.result
+        },
+        success: function (res) {
+          Toast('报名成功')
+        },
+        fail: function () {
+          console.log('系统错误')
+        }
+      })
       wx.redirectTo({
-        url: '../../homepages/homepages',
+        url: '../../homepages/homepages?role=' + wx.getStorageSync("rangeRoles"),
       })
     }
   },
@@ -43,6 +61,7 @@ Page({
   onLoad: function (options) {
     var that = this
     console.log(options)
+    this.data.visitDemandId = options.visitDemandId
     var roleId = wx.getStorageSync("rolesId")
     if (roleId.includes(201)){
       that.setData({
@@ -74,7 +93,7 @@ Page({
         visitingDemandId: options.visitDemandId
       },
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data)
         //进行处理
         that.setData({
           visitDemandDetails: res.data.visitDemandDetails

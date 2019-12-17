@@ -1,31 +1,18 @@
 // pages/administrator/applyaudit/applydetail/applydetail.js
+var app = getApp()
+import Dialog from '../../../../Component/vant/dialog/index';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    user: {
-      name: "张三",
-      reading: "读经内容",
-      pray: "祷告内容",
-      party: "聚会内容",
-      visittime: "2010-10-10",
-      visitreason: "探访原因",
-      careneed: "关怀需要",
-      remark: "备注"
-    },
-    drivers: [
-      { name: "张飞" },
-      { name: "刘备" }
-    ],
-    vistors: [
-      { name: "张飞" },
-      { name: "王五" }
-    ],
     list: ['司机', '探访员'],
+    visitingDemandId: null,
+    visitDemandDetails : null,
     result: [],
-    activeNames: ['1', '2', '3']
+    activeNames: ['1'],
+    userId : null,
+    roleId : null
   },
   
   onChange(event) {
@@ -33,34 +20,115 @@ Page({
       activeNames: event.detail
     });
   },
-
-  handleDelete : function(){
-    console.log(11111111111)
+  //异步关闭
+  onClose(event) {
+    var that = this
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'left':
+        wx.showModal({
+          title: '温馨提示',
+          content: '您确认要指定此人为主要负责人吗？',
+          success(res) {
+            if (res.confirm) {
+              var volunteerList = that.data.visitDemandDetails.drivers.concat(that.data.visitDemandDetails.visitors)
+              var volunteerList = volunteerList.findIndex(item => item.userId == that.data.userId)
+              that.setData({
+                principalId: that.data.userId
+              })
+              instance.close();
+            } else if (res.cancel) {
+              instance.close();
+              console.log('用户点击取消')
+            }
+          }
+        })
+        break;
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        wx.showModal({
+          title: '温馨提示',
+          content: '您确认要删除吗？',
+          success(res) {
+            if (res.confirm) {
+              if (that.data.roleId == 201){
+                var driverList = that.data.visitDemandDetails.drivers
+                var driverIndex = driverList.findIndex(item => item.userId == that.data.userId)
+                driverList.splice(driverIndex,1)
+                that.setData({
+                  driverList: driverList
+                })
+              } else if (that.data.roleId == 202){
+                var visitorList = that.data.visitDemandDetails.visitors
+                var visitorIndex = visitorList.findIndex(item => item.userId == that.data.userId)
+                visitorList.splice(visitorIndex, 1)
+                that.setData({
+                  visitorList: visitorList
+                })
+              }
+              instance.close();
+            } else if (res.cancel) {
+              instance.close();
+              console.log('用户点击取消')
+            }
+          }
+        })
+        break;
+    }
   },
 
-  handlePriDuty : function(){
-    console.log(222222222)
+  handleUserId : function(e){
+    this.data.userId = e.currentTarget.dataset.content
+    this.data.roleId = e.currentTarget.id
   },
 
   pass: function () {
     console.log(1111111)
-    wx.redirectTo({
+    /*wx.redirectTo({
       url: '../../applyaudit/applyaudit',
-    })
+    })*/
   },
 
   reject: function () {
     console.log(2222222)
-    wx.redirectTo({
+    /*wx.redirectTo({
       url: '../../applyaudit/applyaudit',
-    })
+    })*/
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    //console.log(options)
+    wx.request({
+      url: app.globalData.ipAdress + 'visitAudit/visitAuditDetails',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: options.visitDemandId
+      },
+      success: function (res) {
+        //进行处理
+        console.log(res.data)
+        that.setData({
+          visitDemandDetails: res.data.visitDemandDetails,
+          driverList : res.data.visitDemandDetails.drivers,
+          visitorList: res.data.visitDemandDetails.visitors
+        })
+        that.data.visitDemandDetails = res.data.visitDemandDetails
+        that.data.visitingDemandId = options.visitingDemandId
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

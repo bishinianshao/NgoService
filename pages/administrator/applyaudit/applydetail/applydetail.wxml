@@ -5,14 +5,14 @@
       <van-collapse value="{{ activeNames }}" bind:change="onChange">
         <van-collapse-item  title="被探访者信息" name="1" icon="manager">
          <van-cell-group >
-          <van-cell title="姓名" value="{{user.name}}" />
-          <van-cell title="读经" value="{{user.reading}}" />
-          <van-cell title="祷告" value="{{user.pray}}" />
-          <van-cell title="聚会" value="{{user.party}}" />
-          <van-cell title="探访时间" value="{{user.visittime}}" />
-          <van-cell title="探访地点" value="{{user.visitreason}}" />
-          <van-cell title="关怀需要" value="{{user.careneed}}" />
-          <van-cell title="备注" value="{{user.remark}}" />
+          <van-cell title="姓名" value="{{visitDemandDetails.user.name}}" />
+          <van-cell title="读经:" value="{{visitDemandDetails.faithStatue_Read}}" />
+          <van-cell title="探访日期:" value="{{visitDemandDetails.visitingTimeStr}}" />
+          <van-cell title="祷告:" value="{{visitDemandDetails.faithStatue_Prayer}}" />
+          <van-cell title="聚会:" value="{{visitDemandDetails.faithStatue_Meet}}" />
+          <van-cell title="探访原因:" value="{{visitDemandDetails.visitingReason}}" />
+          <van-cell title="探访地点:" value="{{visitDemandDetails.visitAddress}}" />
+          <van-cell title="关怀需要:" value="{{visitDemandDetails.caringNeeds}}" />
          </van-cell-group>
         </van-collapse-item>
       </van-collapse>
@@ -22,30 +22,40 @@
   <view class="containerchild">
    <van-collapse value="{{ activeNames }}" bind:change="onChange">
     <van-collapse-item  title="司机信息"  name="2" icon="map-marked">
-      <view wx:for="{{drivers}}" wx:key="index">
-        <van-swipe-cell   right-width="{{ 65 }}"  left-width="{{ 105 }}" >
-          <van-cell-group >
-            <van-cell title="姓名" value="{{item.name}}" />
+      <view wx:for="{{driverList}}" wx:key="index">
+        <van-swipe-cell right-width="{{65}}" left-width="{{105}}" id="swipe-cell" async-close bind:close="onClose">
+          <van-cell-group>
+            <van-cell value="{{item.name}}" >
+              <view slot="title" style="display: flex;flex-direction: row;">
+                <view class="van-cell-text">姓名</view>
+                <van-tag wx:if="{{item.userId == principalId}}" type="danger">主要负责人</van-tag>
+              </view>
+            </van-cell>
           </van-cell-group>
-            <view slot="right" bindtap="handleDelete">删除</view>
-            <view slot="left" bindtap="handlePriDuty">指定主要负责人</view>
+            <view slot="right" data-content="{{item.userId}}" id="201" bindtap="handleUserId">删除</view>
+            <view slot="left" data-content="{{item.userId}}" id="201" bindtap="handleUserId">指定主要负责人</view>
         </van-swipe-cell>
       </view>
     </van-collapse-item>
    </van-collapse>
   </view>
   <view class="divLine"></view>
-
+  <van-dialog id="van-dialog" />
   <view class="containerchild">
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item  title="探访员信息"  name="3" icon="like">
-        <view wx:for="{{vistors}}" wx:key="index">
-          <van-swipe-cell   right-width="{{ 65 }}"  left-width="{{ 105 }}" >
+        <view wx:for="{{visitorList}}" wx:key="index">
+          <van-swipe-cell right-width="{{65}}" left-width="{{105}}" id="swipe-cell" async-close bind:close="onClose">
             <van-cell-group >
-              <van-cell title="姓名" value="{{item.name}}" />
+              <van-cell value="{{item.name}}" >
+                <view slot="title" style="display: flex;flex-direction: row;">
+                  <view class="van-cell-text">姓名</view>
+                  <van-tag wx:if="{{item.userId == principalId}}" type="danger">主要负责人</van-tag>
+                </view>
+              </van-cell>
             </van-cell-group>
-              <view slot="right" bindtap="handleDelete">删除</view>
-              <view slot="left" bindtap="handlePriDuty">指定主要负责人</view>
+              <view slot="right" data-content="{{item.userId}}" id="202" bindtap="handleUserId">删除</view>
+              <view slot="left" data-content="{{item.userId}}" id="202" bindtap="handleUserId">指定主要负责人</view>
           </van-swipe-cell>
         </view>
       </van-collapse-item>

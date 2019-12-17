@@ -11,7 +11,7 @@ Page({
   },
 
   toAuditDetail: function (e) {
-    console.log(e)
+    //console.log(e)
     var visitDemandList = this.data.visitDemandList
     var visitDemandId = visitDemandList[e.currentTarget.dataset.content].visitingDemandId
     app.router.navigateTo({
