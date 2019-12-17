@@ -36,6 +36,25 @@ Page({
               that.setData({
                 principalId: that.data.userId
               })
+              wx.request({
+                url: app.globalData.ipAdress + 'visitAudit/assignPrincipal',
+                method: 'post',
+                header: {
+                  'content-type': 'application/json'
+                },
+                data: {
+                  token: app.globalData.sessionId,
+                  visitingDemandId: that.data.visitingDemandId,
+                  principalId: that.data.userId
+                },
+                success: function (res) {
+                  //进行处理
+                  console.log(res.data)
+                },
+                fail: function () {
+                  console.log('系统错误')
+                }
+              })
               instance.close();
             } else if (res.cancel) {
               instance.close();
@@ -60,6 +79,7 @@ Page({
                 that.setData({
                   driverList: driverList
                 })
+                that.handleDelte(that.data.userId, that.data.roleId)
               } else if (that.data.roleId == 202){
                 var visitorList = that.data.visitDemandDetails.visitors
                 var visitorIndex = visitorList.findIndex(item => item.userId == that.data.userId)
@@ -67,6 +87,7 @@ Page({
                 that.setData({
                   visitorList: visitorList
                 })
+                that.handleDelte(that.data.userId, that.data.roleId)
               }
               instance.close();
             } else if (res.cancel) {
@@ -84,18 +105,78 @@ Page({
     this.data.roleId = e.currentTarget.id
   },
 
+  handleDelte(memberUserId, roleId){
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'visitAudit/deleteMembers',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: that.data.visitingDemandId,
+        memberUserId: memberUserId,
+        roleId: roleId
+      },
+      success: function (res) {
+        //进行处理
+        console.log(res.data)
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
+  },
+
   pass: function () {
-    console.log(1111111)
-    /*wx.redirectTo({
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'visitAudit/agreeDemand',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: that.data.visitingDemandId
+      },
+      success: function (res) {
+        //进行处理
+        console.log(res.data)
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
+    wx.redirectTo({
       url: '../../applyaudit/applyaudit',
-    })*/
+    })
   },
 
   reject: function () {
-    console.log(2222222)
-    /*wx.redirectTo({
+    var that = this
+    wx.request({
+      url: app.globalData.ipAdress + 'visitAudit/rejectDemand',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: that.data.visitingDemandId
+      },
+      success: function (res) {
+        //进行处理
+        console.log(res.data)
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
+    wx.redirectTo({
       url: '../../applyaudit/applyaudit',
-    })*/
+    })
   },
 
   /**
@@ -103,7 +184,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    //console.log(options)
+    that.data.visitingDemandId = options.visitDemandId
     wx.request({
       url: app.globalData.ipAdress + 'visitAudit/visitAuditDetails',
       method: 'post',
@@ -120,10 +201,10 @@ Page({
         that.setData({
           visitDemandDetails: res.data.visitDemandDetails,
           driverList : res.data.visitDemandDetails.drivers,
-          visitorList: res.data.visitDemandDetails.visitors
+          visitorList : res.data.visitDemandDetails.visitors,
+          principalId : res.data.visitDemandDetails.principalId
         })
         that.data.visitDemandDetails = res.data.visitDemandDetails
-        that.data.visitingDemandId = options.visitingDemandId
       },
       fail: function () {
         console.log('系统错误')
