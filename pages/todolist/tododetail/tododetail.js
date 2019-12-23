@@ -2,31 +2,14 @@
 import Toast from '../../../Component/vant/toast/toast';
 var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    user: {
-      name: "张三",
-      reading: "读经内容",
-      pray: "祷告内容",
-      party: "聚会内容",
-      visittime: "2010-10-10",
-      visitreason: "探访原因",
-      careneed: "关怀需要",
-      remark: "备注"
-    },
-    drivers: [
-      {name : "刘备"}
-    ],
-    vistors: [
-      { name: "张宇" },
-      { name: "王五" }
-    ],
-    list: ['司机', '探访员'],
-    result: [],
-    activeNames: ['1', '2', '3']
+    visitDemandDetails : null,
+    visitDemandId : null,
+    activeNames: ['1'],
+    isPrincipal : false
   },
 
   onChange(event) {
@@ -36,15 +19,40 @@ Page({
   },
   
   sumbit(){
-    console.log(this.data.result)
-      app.router.navigateTo({
-        url: '../report/report'
-      })
+    app.router.navigateTo({
+      url: '../report/report?visitDemandId=' + this.data.visitDemandId
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    this.data.visitDemandId = options.visitDemandId
+    wx.request({
+      url: app.globalData.ipAdress + 'visitAudit/visitAuditDetails',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId : options.visitDemandId
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.data.visitDemandDetails = res.data.visitDemandDetails
+        //进行处理
+        that.setData({
+          visitDemandDetails: res.data.visitDemandDetails,
+          principalId: res.data.visitDemandDetails.principalId,
+          isPrincipal: res.data.isPrincipal
+        })
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
 
   /**

@@ -6,11 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: { 
+    visitDemandId: null,
+    visitDemandList: null
   },
   //详情
-  signup(){
+  signup(e){
+    var visitDemandList = this.data.visitDemandList
+    var visitDemandId = visitDemandList[e.currentTarget.dataset.content].visitingDemandId
     app.router.navigateTo({
-      url: './tododetail/tododetail',
+      url: './tododetail/tododetail?visitDemandId=' + visitDemandId
     })
   },
   /**
@@ -33,7 +37,7 @@ Page({
         that.setData({
           visitDemandList: res.data.visitDemandList
         })
-
+        that.data.visitDemandList = res.data.visitDemandList
       },
       fail: function () {
         console.log('系统错误')

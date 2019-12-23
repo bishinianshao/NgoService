@@ -1,9 +1,7 @@
 // pages/todolist/report/report.js
 var app = getApp();
-var util = require('../../../utils/util.js');
 var upFiles = require('../../../utils/upFiles.js');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,27 +9,26 @@ Page({
     imgs: [],//本地图片地址数组
     picPaths: [],//网络路径
     src : '',
-
     tempImagePaths : [],
     tempVideoPaths : '',
-
-
     upImgArr: [], //存图片
     maxUploadLen: 9,  //限制上传数量
     upVideoArr: [], //存视频
-    upFilesBtn: true,
+    upFilesBtn: true, 
     report: "",
     pray: "",
     upPra : {
-      url : "111.192.102.1",
+      url: app.globalData.ipAdress + 'multimedias/upload',
+      //url: 'http://222.195.149.104:8081/goods/upload',
       filesPathsArr : [],
       name :'file',
-      formData : null,
+      formData: {},
       startIndex : 0,
       successNumber  : 0,
       failNumber : 0,
       completeNumber : 0
-    }
+    },
+    visitDemandId : null
   },
 
   // 选择图片或者视频
@@ -47,7 +44,7 @@ Page({
     }
   },
 
-  // 删除上传图片 或者视频
+  // 删除上传图片
   del(e) {
     let that = this;
     wx.showModal({
@@ -65,9 +62,9 @@ Page({
               upImgArr: upImgArr
             })
           } else if (delType == 'video') {
-            upVideoArr.splice(delNum, 1)
+            //upVideoArr.splice(delNum, 1)
             that.setData({
-              upVideoArr: upVideoArr
+              src: ""
             })
           }
           //console.log(that)
@@ -99,133 +96,87 @@ Page({
       urls: preArr
     })
   },
-
-
-  //添加上传图片
-  /*chooseImageTap: function () {
+  //获取视频
+  getLocalVideo: function () {
     var that = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      itemColor: "#00000",
-      success: function (res) {
-        if (!res.cancel) {
-          if (res.tapIndex == 0) {
-            that.chooseWxImage('album')
-          } else if (res.tapIndex == 1) {
-            that.chooseWxImage('camera')
-          }
-        }
-      }
-    })
-  },*/
-  // 图片本地路径
-  /*chooseWxImage: function (type) {
-    var that = this;
-    var imgsPaths = that.data.imgs;
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'],
-      sourceType: [type],
-      success: function (res) {
-        console.log('图片路径');
-        console.log(res)
-        that.setData({
-          tempImagePaths: res.tempFilePaths
-        })
-        //that.upImgs(res.tempFilePaths[0], 0) //调用上传方法
-      }
-    })
-  },*/
-  //上传服务器
-  /*upImgs: function (imgurl, index) {
-    var that = this;
-    wx.uploadFile({
-      url: 'https://xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-      filePath: imgurl,
-      name: 'file',
-      header: {
-        'content-type': 'multipart/form-data'
-      },
-      formData: null,
-      success: function (res) {
-        console.log(res) //接口返回网络路径
-        var data = JSON.parse(res.data)
-        that.data.picPaths.push(data['msg'])
-        that.setData({
-          picPaths: that.data.picPaths
-        })
-        console.log(that.data.picPaths)
-      }
-    })
-  },*/
-
-  //选择视频
-  /*chooseVideoTap: function () {
-    var that = this;
-    wx.showActionSheet({
-      itemList: ['从手机中选择', '用相机拍摄'],
-      itemColor: "#00000",
-      success: function (res) {
-        console.log("选择视频")
-        if (!res.cancel) {
-          if (res.tapIndex == 0) {
-            that.chooseWxVideo('album')
-          } else if (res.tapIndex == 1) {
-            that.chooseWxVideo('camera')
-          }
-        }
-      }
-    })
-  },*/
-  // 视频本地路径
-  /*chooseWxVideo: function (type) {
-    console.log(type)
-    var that = this;
+    var session_key = wx.getStorageSync('session_key');
     wx.chooseVideo({
-      sourceType: [type],
       maxDuration: 60,
-      camera: 'back',
-      success: function (res) {
-        console.log("视频路径")
-        console.log(res)
+      success: function (res1) {
+        // 这个就是最终拍摄视频的临时路径了
         that.setData({
-          tempVideoPaths: res.tempFilePath,
+          src: res1.tempFilePath,
+          duration: res1.duration,
+          height: res1.height,
+          size: res1.size,
+          width: res1.width,
+          videoshow: 'thumb'
         })
-        //that.uploadvideo(that.data.src)
-      }
-    })*/
-   /* wx.chooseVideo({
-      sourceType: ['album'],
-      maxDuration: 60,
-      camera: 'back',
-      success(res) {
-        console.log(res.tempFilePath)
+        wx.showToast({
+          title: '选择成功',
+          icon: 'succes',
+          duration: 2000,
+          mask: true
+        })
+      },
+      fail: function () {
+        console.error("获取本地视频时出错");
       }
     })
-  },*/
-  //上传视频 
- /* uploadvideo: function (videourl) {
+  },
+  //上传视频
+  uploadvideo: function () {
+    var that = this;
+    wx.showLoading({
+      title: '上传中',
+    })
     var src = this.data.src;
-    console.log("视频上传")
+    console.log(src)
     wx.uploadFile({
-      url: '',//服务器接口
-      method: 'POST',
-      filePath: videourl,
+      url: that.data.upPra.url,
+      filePath: src,
       header: {
         'content-type': 'multipart/form-data'
       },
       name: 'files',//服务器定义的Key值
-      success: function () {
-        console.log('视频上传成功')
+      success: function (e) {
+        wx.hideLoading();
+        /*if (typeof e.data != 'object') {
+          e.data = e.data.replace(/\ufeff/g, "");//重点
+          var data = JSON.parse(e.data);
+          if (data.status == 1) {
+            wx.showToast({
+              title: '上传成功',
+              icon: 'succes',
+              duration: 1000,
+              mask: true
+            })
+            setTimeout(function () {
+              that.backHtml();
+            }, 1000)
+          } else if (data.status == 2) {
+            wx.showToast({
+              title: '文件过大',
+              icon: 'succes',
+              duration: 1000,
+              mask: true
+            })
+          }
+        }*/
       },
       fail: function () {
-        console.log('接口调用失败')
+        wx.showToast({
+          title: '上传失败',
+          icon: 'succes',
+          duration: 1000,
+          mask: true
+        })
       }
     })
-  },*/
-
+  },
   //待祈祷事项内容
   contentChange1(e) {
-    console.log(e.detail)
+    //console.log(e.detail)
     this.setData({
       content1: e.detail.value
     })
@@ -234,7 +185,7 @@ Page({
 
   //汇报内容
   contentChange2(e) {
-    console.log(e.detail)
+    //console.log(e.detail)
     this.setData({
       content2: e.detail.value
     })
@@ -243,17 +194,44 @@ Page({
 
   //提交探访汇报
   sumbit(){
+    var that = this
     let upFilesArr = upFiles.getPathArr(this);
     this.data.upPra.filesPathsArr = upFilesArr
-    console.log(upFilesArr)
-    console.log(this.data.report)
-    console.log(this.data.pray)
+    this.data.upPra.formData = {
+      token: app.globalData.sessionId,
+      visitingDemandId: that.data.visitDemandId
+    }
+    //console.log(upFilesArr)
+    //console.log(this.data.report)
+    //console.log(this.data.pray)
+    //this.uploadvideo()
     upFiles.upFilesFun(this, this.data.upPra,0,this.toHome)
+    wx.request({
+      url: app.globalData.ipAdress + '/volunteer/submitVisitReport',
+      method: 'post',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        token: app.globalData.sessionId,
+        visitingDemandId: that.data.visitDemandId,
+        prayerMatter: that.data.pray,
+        visitingReportRemarks: that.data.report
+      },
+      success: function (res) {
+        console.log(res.data)
+        //进行处理
+      },
+      fail: function () {
+        console.log('系统错误')
+      }
+    })
   },
   toHome(){
-    wx.redirectTo({
+    console.log(111111)
+    /*wx.redirectTo({
       url: '../../homepages/homepages',
-    })
+    })*/
   },
   //申请后期跟进
   follow(){
@@ -267,7 +245,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.data.visitDemandId = options.visitDemandId
   },
 
   /**

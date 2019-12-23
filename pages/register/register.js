@@ -2,12 +2,10 @@
 var app = getApp();
 import Toast from '../../Component/vant/toast/toast';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
@@ -20,7 +18,7 @@ Page({
     wx.login({
       success: function (r) {
         var code = r.code; //登录凭证
-        console.log(code)
+        //console.log(code)
         if (code) {
           //2、调用获取用户信息接口
           wx.getUserInfo({
@@ -38,7 +36,6 @@ Page({
                   code: code
                 },
                 success: function (res) {
-                  //console.log(res)
                   //进行处理
                   console.log(res.data.userInfo)
                   app.globalData.sessionId = res.data.token
@@ -76,9 +73,6 @@ Page({
   },
 
   handleRegister(){
-    /*if (data.detail.rawData) {
-      this.getUserInfo()
-    }*/
     app.router.navigateTo({
       url: './registerdetail/registerdetail',
     })

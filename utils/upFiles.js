@@ -104,10 +104,14 @@ var upFilesFun = (t, data, progress, success) => {
     success([]);
     return;
   }
+  console.log(filesPath)
   const uploadTask = wx.uploadFile({
     url: url,
     filePath: filesPath[startIndex],
     name: name,
+    header: {
+      'content-type': 'multipart/form-data'
+    },
     formData: formData,
     success: function (res) {
       var data = res.data
@@ -115,7 +119,7 @@ var upFilesFun = (t, data, progress, success) => {
       // console.log('success', successNumber)
        console.log('success',res)
       // 把后台返回的地址链接存到一个数组
-      let uploaded = t.data.uploadedPathArr || [];
+      /*let uploaded = t.data.uploadedPathArr || [];
       var da = JSON.parse(res.data);
        console.log(da)
       if (da.code == 1001) {
@@ -125,14 +129,14 @@ var upFilesFun = (t, data, progress, success) => {
         t.setData({
           uploadedPathArr: uploaded
         })
-      }
+      }*/
     },
     fail: function (res) {
       failNumber++;
       // console.log('fail', filesPath[startIndex])
       // console.log('failstartIndex',startIndex)
       // console.log('fail', failNumber)
-      // console.log('fail', res)
+      console.log('fail', res)
     },
     complete: function (res) {
 
@@ -162,9 +166,9 @@ var upFilesFun = (t, data, progress, success) => {
     if (typeof (progress) == 'function') {
       progress(res);
     }
-    // console.log('上传进度', res.progress)
-    // console.log('已经上传的数据长度', res.totalBytesSent)
-    // console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+    console.log('上传进度', res.progress)
+    console.log('已经上传的数据长度', res.totalBytesSent)
+    console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
   })
 
 }

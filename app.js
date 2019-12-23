@@ -39,7 +39,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
+    userId: 0,
     sessionId : 0,
     ipAdress: 'http://222.195.149.104:8080/'
   }

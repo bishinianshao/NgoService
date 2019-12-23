@@ -54,7 +54,14 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/todolist/report/report",
+					"pathName": "pages/todolist/report/report",
+					"scene": null
+				}
+			]
 		}
 	}
 }

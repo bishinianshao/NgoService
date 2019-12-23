@@ -13,6 +13,7 @@
           <van-cell title="探访原因:" value="{{visitDemandDetails.visitingReason}}" />
           <van-cell title="探访地点:" value="{{visitDemandDetails.visitAddress}}" />
           <van-cell title="关怀需要:" value="{{visitDemandDetails.caringNeeds}}" />
+          <van-cell title="备注:" value="{{visitDemandDetails.deliveryDemandRemarks}}" />
          </van-cell-group>
         </van-collapse-item>
       </van-collapse>

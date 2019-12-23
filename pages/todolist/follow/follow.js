@@ -1,4 +1,3 @@
-
 import Toast from '../../../Component/vant/toast/toast';
 Page({
 

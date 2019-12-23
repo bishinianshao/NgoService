@@ -1,6 +1,6 @@
 <!--pages/todolist/todolist.wxml-->
  <view wx:for="{{visitDemandList}}" wx:key="index">
-        <navigator  bindtap='signup'>
+        <navigator url='' data-content="{{index}}" bindtap='signup' >
           <view class="b1">
             <view class="name">
               <view class="cu-avatar xl radius" style="background-image:url('https://img.icons8.com/offices/16/000000/like.png');border-radius: 50%;width:80rpx;height:80rpx;margin-top:20rpx;">
