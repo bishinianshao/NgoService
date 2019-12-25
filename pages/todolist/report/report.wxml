@@ -65,7 +65,10 @@
    </textarea>
   </view>
   <view class="upload">
-    <button class="button" bindtap='sumbit'>提交探访汇报</button>
+    <!--<navigator class="scroll_item" url='/pages/web/web‘>
+    <button class='scroll_item_share_btn' open-type='share' >转发分享</button>
+    </navigator>-->
+    <button class="button" bindtap='submitReport'>提交探访汇报</button>
     <button class="button" bindtap='follow'>申请后期跟进</button>
   </view>
 </view>

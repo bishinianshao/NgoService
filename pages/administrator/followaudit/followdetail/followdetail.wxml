@@ -1,20 +1,21 @@
 <!--pages/administrator/followaudit/followdetail/followdetail.wxml-->
 <view>
-<van-cell-group>  
-    <van-cell title="姓名:" value="{{userInfo.name}}" />
-    <van-cell title="读经:" value="{{userInfo.readingClassics}}" />
-    <van-cell title="探访日期:" value="{{userInfo.visitDate}}" />
-    <van-cell title="祷告:" value="{{userInfo.pray}}" />
-    <van-cell title="聚会:" value="{{userInfo.party}}" />
-    <van-cell title="探访原因:" value="{{userInfo.visitReason}}" />
-    <van-cell title="关怀需要:" value="{{userInfo.care}}" />
+  <van-cell-group>  
+    <van-cell title="姓名:" value="{{visitDemandDetails.user.name}}" />
+    <van-cell title="读经:" value="{{visitDemandDetails.faithStatue_Read}}" />
+    <van-cell title="探访日期:" value="{{visitDemandDetails.visitingTimeStr}}" />
+    <van-cell title="祷告:" value="{{visitDemandDetails.faithStatue_Prayer}}" />
+    <van-cell title="聚会:" value="{{visitDemandDetails.faithStatue_Meet}}" />
+    <van-cell title="探访原因:" value="{{visitDemandDetails.visitingReason}}" />
+    <van-cell title="探访地点:" value="{{visitDemandDetails.visitAddress}}" />
+    <van-cell title="关怀需要:" value="{{visitDemandDetails.caringNeeds}}" />
   </van-cell-group>
-<view class='section'>后期跟进理由:</view>
+  <view class='section'>后期跟进理由:</view>
   <view class="section">
    <textarea 
     style='width:600rpx; font-size: 35rpx;font' 
     maxlength='-1' 
-    value="{{userInfo.followReason}}"
+    value="{{visitDemandDetails.followMatter_Matter}}"
     auto-height
     disabled='true'
     bindinput='contentChange'>   

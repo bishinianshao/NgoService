@@ -6,8 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgs: [],//本地图片地址数组
-    picPaths: [],//网络路径
+    roleIds : null,
     src : '',
     tempImagePaths : [],
     tempVideoPaths : '',
@@ -19,7 +18,7 @@ Page({
     pray: "",
     upPra : {
       url: app.globalData.ipAdress + 'multimedias/upload',
-      //url: 'http://222.195.149.104:8081/goods/upload',
+      //url: 'http://222.195.149.104:8081/upload',
       filesPathsArr : [],
       name :'file',
       formData: {},
@@ -138,7 +137,7 @@ Page({
       header: {
         'content-type': 'multipart/form-data'
       },
-      name: 'files',//服务器定义的Key值
+      name: 'file',//服务器定义的Key值
       success: function (e) {
         wx.hideLoading();
         /*if (typeof e.data != 'object') {
@@ -204,8 +203,10 @@ Page({
     //console.log(upFilesArr)
     //console.log(this.data.report)
     //console.log(this.data.pray)
-    //this.uploadvideo()
-    upFiles.upFilesFun(this, this.data.upPra,0,this.toHome)
+    this.uploadvideo()
+    upFiles.upFilesFun(this, this.data.upPra,0,function(){
+      console.log('success')
+    })
     wx.request({
       url: app.globalData.ipAdress + '/volunteer/submitVisitReport',
       method: 'post',
@@ -227,18 +228,22 @@ Page({
       }
     })
   },
+
   toHome(){
-    console.log(111111)
-    /*wx.redirectTo({
-      url: '../../homepages/homepages',
-    })*/
+    wx.redirectTo({
+      url: '../../homepages/homepages?role=' + wx.getStorageSync("rangeRoles"),
+    })
+  },
+
+  submitReport(){
+    this.sumbit()
+    this.toHome()
   },
   //申请后期跟进
   follow(){
-    console.log(this.data.report)
-    console.log(this.data.pray)
+    this.sumbit()
     wx.redirectTo({
-      url: '../follow/follow',
+      url: '../follow/follow?visitDemandId=' + this.data.visitDemandId,
     })
   },
   /**
@@ -246,6 +251,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.data.roleIds = wx.getStorageSync("rangeRoles")
     this.data.visitDemandId = options.visitDemandId
   },
 

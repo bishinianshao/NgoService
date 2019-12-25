@@ -4,53 +4,67 @@
 <van-cell-group>  
     <van-field
       id = "1"
-      value="{{value}}"
+      value="{{visitDemandDetails.user.name}}"
       required
       clearable
+      data-model="name"
       label="姓名:"
       bindchange="onChange"
     />
     <van-field
       id = "2"
-      value="{{value}}"
+      value="{{visitDemandDetails.faithStatue_Read}}"
       clearable
+      data-model="faithStatue_Read"
       label="读经:"
       placeholder="请输入读经内容"
       bindchange="onChange"
     />
     <van-field
       id = "3"
-      value="{{value}}"
+      value="{{visitDemandDetails.faithStatue_Prayer}}"
       clearable
+      data-model="faithStatue_Prayer"
       label="祷告:"
       placeholder="请输入祷告"
       bindchange="onChange"
     />
     <van-field
       id = "4"
-      value="{{value}}"
+      value="{{visitDemandDetails.faithStatue_Meet}}"
       clearable
+      data-model="faithStatue_Meet"
       label="聚会:"
       placeholder="请输入聚会内容"
       bindchange="onChange"
     />
     <van-field
       id = "5"
-      value="{{value}}"
+      value="{{visitDemandDetails.visitingReason}}"
       clearable
+      data-model="visitingReason"
       label="探访原因:"
       bindchange="onChange"
     />
     <van-field
       id = "6"
-      value="{{value}}"
+      value="{{visitDemandDetails.visitAddress}}"
       clearable
+      data-model="visitAddress"
+      label="探访地点:"
+      bindchange="onChange"
+    />
+    <van-field
+      id = "7"
+      value="{{visitDemandDetails.caringNeeds}}"
+      clearable
+      data-model="caringNeeds"
       label="关怀需要:"
       bindchange="onChange"
     />
   </van-cell-group>
   <view class="section">
-    <picker mode="date" value="{{date}}" start="1920-01-01" end="2017-09-01" bindchange="bindDateChange">
+    <picker mode="date" value="{{date}}" start="1920-01-01" end="2100-09-01" bindchange="bindDateChange">
       <view class="picker">
         探访日期: {{date}}
       </view>
