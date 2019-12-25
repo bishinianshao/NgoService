@@ -7,7 +7,7 @@ Page({
   data: {
     list: ['司机', '探访员'],
     result: [],
-    activeNames: ['1', '2', '3']
+    activeNames: ['1']
   },
 
   onChange(event) {
@@ -32,6 +32,7 @@ Page({
         visitingDemandId: options.visitDemandId
       },
       success: function (res) {
+        console.log(res.data)
         //进行处理
         that.setData({
           detailInfo: res.data.viewDemandDetails

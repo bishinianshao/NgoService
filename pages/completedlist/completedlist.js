@@ -6,22 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    todolist: [
-      {
-        name: "王红",
-        date: '2018-10-07'
-      },
-      {
-        name: "诸葛亮",
-        date: '2018-10-08'
-      },
-    ]
-
+    visitDemandId: null,
+    visitDemandList: null
   },
   //详情
-  signup() {
+  signup(e) {
+    var visitDemandList = this.data.visitDemandList
+    var visitDemandId = visitDemandList[e.currentTarget.dataset.content].visitingDemandId
     app.router.navigateTo({
-      url: './completdetail/completdetail',
+      url: './completdetail/completdetail?visitDemandId=' + visitDemandId
     })
   },
 
@@ -29,19 +22,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     wx.request({
-      url: app.globalData.ipAdress + 'user/viewVisitDemand',
+      url: app.globalData.ipAdress + 'volunteer/visitCompleted',
       method: 'post',
       header: {
         'content-type': 'application/json'
       },
       data: {
-        token: app.globalData.sessionId,
-        states : [0,1,2]
+        token: app.globalData.sessionId
       },
       success: function (res) {
         console.log(res.data)
         //进行处理
+        that.setData({
+          visitDemandList: res.data.visitDemandList
+        })
+        that.data.visitDemandList = res.data.visitDemandList
       },
       fail: function () {
         console.log('系统错误')

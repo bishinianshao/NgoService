@@ -30,7 +30,7 @@ Page({
     var that = this
     this.data.visitDemandId = options.visitDemandId
     wx.request({
-      url: app.globalData.ipAdress + 'visitAudit/visitAuditDetails',
+      url: app.globalData.ipAdress + 'volunteer/visitDemandDetails',
       method: 'post',
       header: {
         'content-type': 'application/json'
@@ -44,9 +44,7 @@ Page({
         that.data.visitDemandDetails = res.data.visitDemandDetails
         //进行处理
         that.setData({
-          visitDemandDetails: res.data.visitDemandDetails,
-          principalId: res.data.visitDemandDetails.principalId,
-          isPrincipal: res.data.isPrincipal
+          visitDemandDetails: res.data.visitDemandDetails
         })
       },
       fail: function () {

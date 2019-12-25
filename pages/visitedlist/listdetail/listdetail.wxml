@@ -3,15 +3,20 @@
   <view class="containerchild">
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item  title="被探访者信息" name="1" icon="manager">
-        <van-cell-group >
+        <van-cell-group>
           <van-cell title="姓名" value="{{detailInfo.user.name}}" />
           <van-cell title="读经" value="{{detailInfo.faithStatue_Read}}" />
           <van-cell title="祷告" value="{{detailInfo.faithStatue_Prayer}}" />
           <van-cell title="聚会" value="{{detailInfo.faithStatue_Meet}}" />
-          <van-cell title="探访时间" value="{{detailInfo.visitingTime}}" />
+          <van-cell title="探访时间" value="{{detailInfo.visitingTimeStr}}" />
+          <van-cell title="探访地点" value="{{detailInfo.visitAddress}}" />
           <van-cell title="探访原因" value="{{detailInfo.visitreason}}" />
           <van-cell title="关怀需要" value="{{detailInfo.caringNeeds}}" />
-          <van-cell title="备注" value="{{detailInfo.visitingReportRemarks}}" />
+          <van-cell title="备注" value="{{detailInfo.deliveryDemandRemarks}}" />
+        </van-cell-group>
+        <van-cell-group  wx:if = "{{detailInfo.state == 4}}">
+          <van-cell title="待祈事项" value="{{detailInfo.prayerMatter}}" />
+          <van-cell title="汇报" value="{{detailInfo.visitingReportRemarks}}" />
         </van-cell-group>
       </van-collapse-item>
     </van-collapse>
