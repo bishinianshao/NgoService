@@ -39,16 +39,16 @@
   </view>-->
   
   <view class="upload">
-  <view class="upload-font">待祈祷事项内容</view>
+  <view class="upload-font">代祷事项</view>
   </view>
   <view class="section">
    <textarea 
     style='width:600rpx; font-size: 35rpx;' 
-    placeholder='待祈祷事项内容' 
+    placeholder='代祷事项' 
     maxlength='-1' 
     value="{{content1}}"
     auto-height
-    bindinput='contentChange1'>   
+    bindinput='onPrayChange'>   
    </textarea>
   </view>
   <view class="upload">
@@ -61,7 +61,7 @@
     maxlength='-1' 
     value="{{content2}}"
     auto-height
-    bindinput='contentChange2'>   
+    bindinput='onReportChange'>   
    </textarea>
   </view>
   <view class="upload">

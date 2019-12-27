@@ -4,7 +4,7 @@
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item  title="被探访者信息" name="1" icon="manager">
         <van-cell-group >
-          <van-cell title="姓名" value="{{visitDemandDetails.user.name}}" />
+          <van-cell title="姓名:" value="{{visitDemandDetails.user.name}}" />
           <van-cell title="读经:" value="{{visitDemandDetails.faithStatue_Read}}" />
           <van-cell title="探访日期:" value="{{visitDemandDetails.visitingTimeStr}}" />
           <van-cell title="祷告:" value="{{visitDemandDetails.faithStatue_Prayer}}" />
@@ -17,6 +17,14 @@
       </van-collapse-item>
     </van-collapse>
   </view>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange">
+    <van-collapse-item  title="探访汇报信息" name="4" icon="manager">
+      <van-cell-group >
+        <van-cell title="代祷事项:" value="{{visitDemandDetails.prayerMatter}}" />
+        <van-cell title="汇报:" value="{{visitDemandDetails.visitingReportRemarks}}" />
+      </van-cell-group>
+    </van-collapse-item>
+  </van-collapse>
   <view class="divLine"></view>
   <view class="containerchild">
     <van-collapse value="{{ activeNames }}" bind:change="onChange">

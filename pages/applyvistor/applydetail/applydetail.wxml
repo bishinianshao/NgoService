@@ -49,7 +49,7 @@
   
   <view class="containerchild">
     <view class="info1">请选择担任角色</view>
-    <van-checkbox-group class="checkboxgroup" value="{{ result }}" bind:change="onNextChange">
+    <van-checkbox-group class="checkboxgroup" value="{{ result }}" bind:change="onRoleChange">
       <van-checkbox
         class="checkbox"
         name="201"

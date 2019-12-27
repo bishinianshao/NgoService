@@ -2,9 +2,6 @@
 .container{
   display: flex
 }
-.list{
-  
-}
 .list-item{
   width: 500rpx;
   height: 200rpx;

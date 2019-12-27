@@ -21,7 +21,7 @@ Page({
     checked2: true
   },
   //司机状态改变
-  onChangeSwitch1({ detail }) {
+  onDriverSwitchChange({ detail }) {
     var that = this
     // 需要手动对 checked 状态进行更新
     this.setData({ checked1: detail });
@@ -42,7 +42,7 @@ Page({
     }
   },
   //探访员状态改变
-  onChangeSwitch2({ detail }) {
+  onVisitorSwitchChange({ detail }) {
     var that = this
     this.setData({ checked2: detail });
     // 需要手动对 checked 状态进行更新

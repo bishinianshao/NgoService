@@ -7,10 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectData: ['女', '男'],//下拉列表的数据
     index: null,//选择的下拉列表下标
-    userInforArr : [],
     birthDate : null,
     list: [{
         name: '司机',
@@ -89,24 +87,16 @@ Page({
       }
     })
   },
-
-  // 点击下拉显示框
-  selectTap() {
-    this.setData({
-      show: !this.data.show
-    });
-  },
-
   //性别选择
   bindGenderChange : function (e){
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
   //出生日期绑定值
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
@@ -118,7 +108,7 @@ Page({
     //console.log(this.data.userInforArr)
   },
   bindHallChange (e){
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    //console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       hallIndex: e.detail.value
     })
@@ -173,7 +163,7 @@ Page({
   },
   //探访员注册信息
   contentChange(e){
-    console.log(e.detail)
+    //console.log(e.detail)
     this.setData({
       content: e.detail.value
     })

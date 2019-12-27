@@ -174,7 +174,7 @@ Page({
     })
   },
   //待祈祷事项内容
-  contentChange1(e) {
+  onPrayChange(e) {
     //console.log(e.detail)
     this.setData({
       content1: e.detail.value
@@ -183,7 +183,7 @@ Page({
   },
 
   //汇报内容
-  contentChange2(e) {
+  onReportChange(e) {
     //console.log(e.detail)
     this.setData({
       content2: e.detail.value

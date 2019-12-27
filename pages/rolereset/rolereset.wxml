@@ -11,7 +11,7 @@
                 disabled = "{{driverDisabled}}" 
                 active-color="#07c160" 
                 inactive-color="#ee0a24"
-                bind:change="onChange1" />  
+                bind:change="onDriverSwitchChange" />  
   </view>
   <view class="divLine"></view>
   <view class="reset">
@@ -25,7 +25,7 @@
                 active-color="#07c160" 
                 disabled = "{{visitorDisabled}}"
                 inactive-color="#ee0a24"
-                bind:change="onChange2" />
+                bind:change="onVisitorSwitchChange" />
   </view>
   <view class="divLine"></view>
   <van-toast id="van-toast" />

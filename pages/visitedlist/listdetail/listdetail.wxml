@@ -14,18 +14,23 @@
           <van-cell title="关怀需要" value="{{detailInfo.caringNeeds}}" />
           <van-cell title="备注" value="{{detailInfo.deliveryDemandRemarks}}" />
         </van-cell-group>
-        <van-cell-group  wx:if = "{{detailInfo.state == 4}}">
-          <van-cell title="待祈事项" value="{{detailInfo.prayerMatter}}" />
-          <van-cell title="汇报" value="{{detailInfo.visitingReportRemarks}}" />
-        </van-cell-group>
       </van-collapse-item>
     </van-collapse>
   </view>
   <view class="divLine"></view>
+   <van-collapse wx:if = "{{detailInfo.state == 4}}" value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item  title="探访汇报信息" name="4" icon="manager">
+        <van-cell-group >
+          <van-cell title="代祷事项:" value="{{detailInfo.prayerMatter}}" />
+          <van-cell title="汇报:" value="{{detailInfo.visitingReportRemarks}}" />
+        </van-cell-group>
+      </van-collapse-item>
+    </van-collapse>
+  <view class="divLine"></view>
   <view class="containerchild">
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item  title="司机信息"  name="2" icon="map-marked">
-        <view wx:for="{{drivers}}" wx:key="index">
+        <view wx:for="{{detailInfo.drivers}}" wx:key="index">
           <van-cell-group >
             <van-cell title="姓名" value="{{item.name}}" />
           </van-cell-group>
@@ -38,7 +43,7 @@
   <view class="containerchild">
     <van-collapse value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item  title="探访员信息"  name="3" icon="like">
-        <view wx:for="{{vistors}}" wx:key="index">
+        <view wx:for="{{detailInfo.visitors}}" wx:key="index">
           <van-cell-group >
             <van-cell title="姓名" value="{{item.name}}" />
           </van-cell-group>

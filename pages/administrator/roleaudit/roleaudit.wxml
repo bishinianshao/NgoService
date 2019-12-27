@@ -1,5 +1,5 @@
 <!--pages/administrator/roleaudit/roleaudit.wxml-->
-   <view wx:for="{{visitDemandList}}" wx:key="index" wx:for-item="i">
+   <view wx:for="{{waitReviewUser}}" wx:key="index" wx:for-item="i">
         <navigator url='' data-content="{{index}}"  bindtap='toAuditDetail'>
           <view class="b1">
             <view class="name">
@@ -10,8 +10,10 @@
             <view class="content">
               <view>
                 <text class="MailContent">姓名 : {{i.name}}</text>
-                <text class='MailContent' wx:for="{{waitReviewUserRoleList[index]}}" wx:key="index" wx:for-item="j">重置角色：{{j.name}}</text>
-                <text class='nameText' wx:for="{{waitReviewUserRoleList[index]}}" wx:key="index" wx:for-item="j">{{j.applyTimeStr}}</text>
+                <view style=" display: flex;flex-direction: column;" wx:for="{{waitReviewUserRoleList[index]}}" wx:key="index" wx:for-item="j">
+                  <text class='MailContent' >重置角色：{{j.name}}</text>
+                  <text class='nameText'>{{j.applyTimeStr}}</text>
+                </view>
               </view>
             </view>
           </view>

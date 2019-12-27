@@ -62,7 +62,7 @@
     />
   </van-cell-group>
   <view class="section">
-    <picker mode="date" value="{{date}}" start="1920-01-01" end="2017-09-01" bindchange="bindDateChange">
+    <picker mode="date" value="{{date}}" start="1920-01-01" end="2100-09-01" bindchange="bindDateChange">
       <view class="picker">
         探访日期: {{date}}
       </view>

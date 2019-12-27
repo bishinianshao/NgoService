@@ -29,12 +29,12 @@
             <van-cell value="{{item.name}}" >
               <view slot="title" style="display: flex;flex-direction: row;">
                 <view class="van-cell-text">姓名</view>
-                <van-tag wx:if="{{item.userId == principalId}}" type="danger">主要负责人</van-tag>
+                <van-tag wx:if="{{item.userId == principalId}}" type="danger">负责人</van-tag>
               </view>
             </van-cell>
           </van-cell-group>
             <view slot="right" data-content="{{item.userId}}" id="201" bindtap="handleUserId">删除</view>
-            <view slot="left" data-content="{{item.userId}}" id="201" bindtap="handleUserId">指定主要负责人</view>
+            <view slot="left" data-content="{{item.userId}}" id="201" bindtap="handleUserId">负责人</view>
         </van-swipe-cell>
       </view>
     </van-collapse-item>
@@ -51,12 +51,12 @@
               <van-cell value="{{item.name}}" >
                 <view slot="title" style="display: flex;flex-direction: row;">
                   <view class="van-cell-text">姓名</view>
-                  <van-tag wx:if="{{item.userId == principalId}}" type="danger">主要负责人</van-tag>
+                  <van-tag wx:if="{{item.userId == principalId}}" type="danger">负责人</van-tag>
                 </view>
               </van-cell>
             </van-cell-group>
               <view slot="right" data-content="{{item.userId}}" id="202" bindtap="handleUserId">删除</view>
-              <view slot="left" data-content="{{item.userId}}" id="202" bindtap="handleUserId">指定主要负责人</view>
+              <view slot="left" data-content="{{item.userId}}" id="202" bindtap="handleUserId">负责人</view>
           </van-swipe-cell>
         </view>
       </van-collapse-item>

@@ -16,7 +16,7 @@ Page({
     roleArr : []
   },
 
-  onChangeSwitch1({ detail }) {
+  onDriverSwitchChange({ detail }) {
     var that = this
     // 需要手动对 checked 状态进行更新
     this.setData({ checked1: detail });
@@ -38,7 +38,7 @@ Page({
     }
   },
 
-  onChangeSwitch2({ detail }) {
+  onVisitorSwitchChange({ detail }) {
     var that = this
     console.log(that.data.roleArr)
     // 需要手动对 checked 状态进行更新

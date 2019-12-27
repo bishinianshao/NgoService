@@ -28,7 +28,7 @@
                   active-color="#07c160" 
                   size="24px" 
                   disabled = "{{driverAble}}" 
-                  bind:change="onChangeSwitch1" />
+                  bind:change="onDriverSwitchChange" />
     </view>
     <van-cell-group>
       <van-cell title="车牌号:" value="{{userInfo.carNumber}}" />
@@ -48,7 +48,7 @@
                 active-color="#07c160"
                 disabled = "{{vistorsAble}}" 
                 size="24px" 
-                bind:change="onChangeSwitch2" />
+                bind:change="onVisitorSwitchChange" />
   </view>
   <view class="section">
    <textarea 

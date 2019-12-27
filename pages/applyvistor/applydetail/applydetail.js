@@ -19,7 +19,7 @@ Page({
     });
   },
 
-  onNextChange(e) {
+  onRoleChange(e) {
     console.log(e.detail)
     this.setData({
       result: e.detail,

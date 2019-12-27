@@ -19,7 +19,7 @@
       </view>
       <view class="divLine"></view>
       <view class="section">
-        <picker mode="date" value="{{userInfo.birthdayStr}}" start="1920-01-01" end="2017-09-01" bindchange="bindDateChange">
+        <picker mode="date" value="{{userInfo.birthdayStr}}" start="1920-01-01" end="2100-09-01" bindchange="bindDateChange">
           <view class="picker"  class="picker" style="font-size: 35rpx;color: black">
             出生日期: <view style=" padding-left: 73rpx;">{{date}}</view>
           </view>

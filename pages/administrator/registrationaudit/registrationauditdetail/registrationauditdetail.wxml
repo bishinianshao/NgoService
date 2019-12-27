@@ -21,7 +21,7 @@
   <view  wx:if = "{{isDriver}}">
     <view class="containerchild">
       <view class='driver'>司机信息 ： </view>
-      <van-switch checked="{{ checked1 }}"  active-color="#07c160" size="24px" bind:change="onChangeSwitch1" />
+      <van-switch checked="{{ checked1 }}"  active-color="#07c160" size="24px" bind:change="onDriverSwitchChange" />
     </view>
     <van-cell-group>
       <van-cell title="车牌号:" value="{{userInfo.carNumber}}" />
@@ -34,7 +34,7 @@
 <view wx:if = "{{isVistors}}">
   <view class="containerchild">
       <view class='visitor'>探访员信息 ： </view>
-      <van-switch checked="{{ checked2 }}"  active-color="#07c160" size="24px" bind:change="onChangeSwitch2" />
+      <van-switch checked="{{ checked2 }}"  active-color="#07c160" size="24px" bind:change="onVisitorSwitchChange" />
   </view>
   <view class="section">
    <textarea 
